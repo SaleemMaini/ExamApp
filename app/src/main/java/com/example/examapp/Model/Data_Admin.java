@@ -1,11 +1,11 @@
 package com.example.examapp.Model;
 
 public class Data_Admin {
-    private int id;
-    private String name;
-    private String fname;
-    private String lname;
-    private String username;
+    public int id;
+    public String name;
+    public String fname;
+    public String lname;
+    public String username;
 
     public Data_Admin() {
     }

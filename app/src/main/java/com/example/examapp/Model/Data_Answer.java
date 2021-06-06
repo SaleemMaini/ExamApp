@@ -1,10 +1,10 @@
 package com.example.examapp.Model;
 
 public class Data_Answer {
-    private int id;
-    private String text;
-    private int status;
-    private int id_question;
+    public int id;
+    public String text;
+    public int status;
+    public int id_question;
 
     public Data_Answer() {
     }

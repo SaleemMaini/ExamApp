@@ -8,7 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.examapp.Model.Data;
+import com.example.examapp.Model.Data_Account;
+import com.example.examapp.Model.Data_Admin;
+import com.example.examapp.Model.Data_Answer;
+import com.example.examapp.Model.Data_Course;
+import com.example.examapp.Model.Data_Exam;
+import com.example.examapp.Model.Data_Question;
+import com.example.examapp.Model.Data_Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,50 +104,160 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public  long insertData(Data data){
+// insert part //
+
+    // insert data to account table
+    public  long insertDataToAccount(Data_Account data){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(Utils.COLOUMN_NAME , data.getName());
-        cv.put(Utils.COLOUMN_LNAME , data.getLname());
-        cv.put(Utils.COLOUMN_DESCRIPTION , data.getDescription());
-        cv.put(Utils.COLOUMN_AGE , data.getAge());
-        long id = db.insert(Utils.TABLE_NAME , null , cv);
+        cv.put("userName", data.getUserName());
+        cv.put("password" , data.getPassword());
+        cv.put("type" , data.getType());
+        long id = db.insert(TABLE1_NAME , null , cv);
+        db.close();
+        return  id;
+    }
+    // insert data to admin table
+    public  long insertDataToAdmin(Data_Admin data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("id", data.getId());
+        cv.put("name" , data.getName());
+        cv.put("fname" , data.getFname());
+        cv.put("lname", data.getLname());
+        cv.put("username", data.getUsername());
+        long id = db.insert(TABLE2_NAME , null , cv);
+        db.close();
+        return  id;
+    }
+    // insert data to student table
+    public  long insertDataToStudent(Data_Student data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("id", data.getId());
+        cv.put("name" , data.getName());
+        cv.put("fname" , data.getFname());
+        cv.put("lname", data.getLname());
+        cv.put("username", data.getUsername());
+        cv.put("id_exam", data.getId_exam());
+        long id = db.insert(TABLE3_NAME , null , cv);
+        db.close();
+        return  id;
+    }
+    // insert data to question table
+    public  long insertDataToQuestion(Data_Question data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("id", data.getId());
+        cv.put("text" , data.getText();
+        cv.put("id_answer" , data.getId_answer());
+        cv.put("mark", data.getMark());
+        long id = db.insert(TABLE4_NAME , null , cv);
+        db.close();
+        return  id;
+    }
+    // insert data to answer table
+    public  long insertDataToAnswer(Data_Answer data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("id", data.getId());
+        cv.put("text" , data.getText());
+        cv.put("status" , data.getStatus());
+        cv.put("id_question", data.getId_question());
+        long id = db.insert(TABLE5_NAME , null , cv);
+        db.close();
+        return  id;
+    }
+    // insert data to course table
+    public  long insertDataToCourse(Data_Course data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("id", data.getId());
+        cv.put("type" , data.getType());
+        cv.put("id_question" , data.getId_question());
+        cv.put("id_exam", data.getId_exam());
+        long id = db.insert(TABLE6_NAME , null , cv);
+        db.close();
+        return  id;
+    }
+    // insert data to exam table
+    public  long insertDataToExam(Data_Exam data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("id_course", data.getId_course());
+        cv.put("id_student" , data.getId_student());
+        cv.put("mark" , data.getMark());
+        long id = db.insert(TABLE7_NAME , null , cv);
         db.close();
         return  id;
     }
 
-    public  int updateData(Data data){
+// Update Part //
+
+    // update data for question table
+    public  int updateDataToQuestion(Data_Question data){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(Utils.COLOUMN_NAME , data.getName());
-        cv.put(Utils.COLOUMN_LNAME , data.getLname());
-        cv.put(Utils.COLOUMN_DESCRIPTION , data.getDescription());
-        cv.put(Utils.COLOUMN_AGE , data.getAge());
-        return db.update(Utils.TABLE_NAME , cv , "id" + " =?",
+        cv.put("id", data.getId());
+        cv.put("text" , data.getText();
+        cv.put("id_answer" , data.getId_answer());
+        cv.put("mark", data.getMark());
+        return db.update(TABLE4_NAME, cv , "id" + " =?",
+                new String[]{String.valueOf(data.getId())});
+    }
+    // update data for answer table
+    public  int updateDataToAnswer(Data_Answer data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("id", data.getId());
+        cv.put("text" , data.getText());
+        cv.put("status" , data.getStatus());
+        cv.put("id_question", data.getId_question());
+        return db.update(TABLE5_NAME, cv , "id" + " =?",
+                new String[]{String.valueOf(data.getId())});
+    }
+    // update data for student table
+    public  int updateDataToStudent(Data_Student data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("id", data.getId());
+        cv.put("name" , data.getName());
+        cv.put("fname" , data.getFname());
+        cv.put("lname", data.getLname());
+        cv.put("username", data.getUsername());
+        cv.put("id_exam", data.getId_exam());
+        return db.update(TABLE3_NAME, cv , "id" + " =?",
                 new String[]{String.valueOf(data.getId())});
     }
 
-
-    public  void deleteData(Data data){
+// Delete Part //
+    // delete data from question table
+    public  void deleteDataFromQuestion(Data_Question data){
         SQLiteDatabase db = this.getWritableDatabase();
-            db.delete(Utils.TABLE_NAME ,  Utils.COLOUMN_ID + " =?",
+            db.delete(TABLE4_NAME ,  data.getId() + " =?",
                 new String[]{String.valueOf(data.getId())});
             db.close();
     }
+    // delete data from answer table
+    public  void deleteDataFromAnswer(Data_Answer data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE5_NAME ,  data.getId() + " =?",
+                new String[]{String.valueOf(data.getId())});
+        db.close();
+    }
 
-
-    public  Data getData(int id) {
+// Get Part //
+    // update from question table
+    public  Data_Question getDataFromQuestion(int id) {
+        Data_Question data = new Data_Question();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(Utils.TABLE_NAME,
-                new String[]{Utils.COLOUMN_ID,
-                        Utils.COLOUMN_NAME,Utils.COLOUMN_LNAME
-                        ,Utils.COLOUMN_DESCRIPTION,
-                        Utils.COLOUMN_AGE,Utils.COLOUMN_TIME_STAMP},
-                Utils.COLOUMN_ID + "=?", new String[]{String.valueOf(id)},
+        Cursor cursor = db.query(TABLE4_NAME,
+                new String[]{ data.getText() },
+                data.getId() + "=?", new String[]{String.valueOf(id)},
                 null,null,null,null);
-
         if(cursor != null)
             cursor.moveToFirst();
+
    //     Data data = new Data(
 //                cursor.getInt(cursor.getColumnIndex(Utils.COLOUMN_ID)),
 //                cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_NAME)),
@@ -151,15 +267,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //                cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_TIME_STAMP))  );
 
 
-         Data data = new Data(
+        Data_Question data1 = new Data_Question(
         Integer.parseInt(cursor.getString(0)),
-        cursor.getString(1) ,
-                cursor.getString(2) ,
-                cursor.getString(3) ,
-                cursor.getString(4)
-        );
+        cursor.getString(1));
 
-        return data;
+        return data1;
     }
 
 

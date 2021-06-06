@@ -1,9 +1,9 @@
 package com.example.examapp.Model;
 
 public class Data_Exam {
-    private int id_course;
-    private int id_student;
-    private int mark;
+    public int id_course;
+    public int id_student;
+    public int mark;
 
     public Data_Exam() {
     }

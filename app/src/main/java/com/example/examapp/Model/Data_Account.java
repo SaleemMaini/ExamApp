@@ -2,9 +2,9 @@ package com.example.examapp.Model;
 
 public class Data_Account {
 
-    private String userName;
-    private String password;
-    private int type;
+    public String userName;
+    public String password;
+    public int type;
 
     public Data_Account() {
     }

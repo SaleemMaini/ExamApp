@@ -1,10 +1,10 @@
 package com.example.examapp.Model;
 
 public class Data_Course {
-    private int id;
-    private String type;
-    private int id_question;
-    private int id_exam;
+    public int id;
+    public String type;
+    public int id_question;
+    public int id_exam;
 
     public Data_Course() {
     }

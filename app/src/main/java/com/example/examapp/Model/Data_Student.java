@@ -1,12 +1,12 @@
 package com.example.examapp.Model;
 
 public class Data_Student {
-    private int id;
-    private String name;
-    private String fname;
-    private String lname;
-    private String username;
-    private String id_exam;
+    public int id;
+    public String name;
+    public String fname;
+    public String lname;
+    public String username;
+    public String id_exam;
 
     public Data_Student() {
     }
