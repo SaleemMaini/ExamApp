@@ -22,6 +22,9 @@ public class Data_Question {
         this.mark = mark;
     }
 
+    public Data_Question(String text) {
+        this.text = text;
+    }
 
     public int getId() {
         return id;

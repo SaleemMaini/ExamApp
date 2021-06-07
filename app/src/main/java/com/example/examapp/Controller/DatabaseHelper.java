@@ -149,7 +149,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("id", data.getId());
-        cv.put("text" , data.getText();
+        cv.put("text" , data.getText());
         cv.put("id_answer" , data.getId_answer());
         cv.put("mark", data.getMark());
         long id = db.insert(TABLE4_NAME , null , cv);
@@ -199,7 +199,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("id", data.getId());
-        cv.put("text" , data.getText();
+        cv.put("text" , data.getText());
         cv.put("id_answer" , data.getId_answer());
         cv.put("mark", data.getMark());
         return db.update(TABLE4_NAME, cv , "id" + " =?",
@@ -257,7 +257,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null,null,null,null);
         if(cursor != null)
             cursor.moveToFirst();
-
    //     Data data = new Data(
 //                cursor.getInt(cursor.getColumnIndex(Utils.COLOUMN_ID)),
 //                cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_NAME)),
@@ -265,35 +264,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //                cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_DESCRIPTION)),
 //                cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_AGE)),
 //                cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_TIME_STAMP))  );
+        Data_Question data1 = new Data_Question((cursor.getString(1)));
+        return data1;
+    }
 
-
-        Data_Question data1 = new Data_Question(
-        Integer.parseInt(cursor.getString(0)),
-        cursor.getString(1));
-
+    // update from answer table
+    public  Data_Answer getDataFromAnswer(int id) {
+        Data_Answer data = new Data_Answer();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE5_NAME,
+                new String[]{ data.getText(), String.valueOf(data.getStatus()), String.valueOf(data.getId_question())},
+                data.getId() + "=?", new String[]{String.valueOf(id)},
+                null,null,null,null);
+        if(cursor != null)
+            cursor.moveToFirst();
+        //     Data data = new Data(
+//                cursor.getInt(cursor.getColumnIndex(Utils.COLOUMN_ID)),
+//                cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_NAME)),
+//                cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_LNAME)),
+//                cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_DESCRIPTION)),
+//                cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_AGE)),
+//                cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_TIME_STAMP))  );
+        Data_Answer data1 = new Data_Answer(
+                cursor.getString(1),
+                Integer.parseInt(cursor.getString(2)),
+                Integer.parseInt(cursor.getString(3)));
         return data1;
     }
 
 
+// get all data
 
-
-    public List<Data> getAllData() {
-        List<Data> allData = new ArrayList<>();
-        String query = "SELECT * FROM "+ Utils.TABLE_NAME +
-                " ORDER BY " + Utils.COLOUMN_TIME_STAMP + " DESC";
+    public List<Data_Student> getAllData() {
+        Data_Student data = new Data_Student();
+        List<Data_Student> allData = new ArrayList<>();
+        String query = "SELECT * FROM "+ TABLE3_NAME +
+                " ORDER BY " + "fname" + " DESC"; //  query must be completed
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery( query ,null);
         if(cursor.moveToFirst())
           do{
-              Data data = new Data();
-              data.setId(cursor.getInt(cursor.getColumnIndex(Utils.COLOUMN_ID)));
-              data.setName( cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_NAME)));
-              data.setLname( cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_LNAME)));
-              data.setAge(cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_AGE)));
-              data.setDescription( cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_DESCRIPTION)));
-              data.setTimeStamp(cursor.getString(cursor.getColumnIndex(Utils.COLOUMN_TIME_STAMP)));
-
-              allData.add(data);
+              Data_Student data1 = new Data_Student();
+              data.setId(cursor.getInt(cursor.getColumnIndex("id")));
+              data.setName( cursor.getString(cursor.getColumnIndex("name")));
+              data.setFname( cursor.getString(cursor.getColumnIndex("fname")));
+              data.setLname( cursor.getString(cursor.getColumnIndex("lname")));
+              data.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+              data.setId_exam( cursor.getString(cursor.getColumnIndex("id_exam")));
+              allData.add(data1);
 
           }while (cursor.moveToNext());
         db.close();
@@ -301,14 +319,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public  int getDataCount(){
-        String query = "SELECT * FROM "+ Utils.TABLE_NAME ;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery( query ,null);
-        int count = cursor.getCount();
-        cursor.close();
-        return count;
-    }
+//    public  int getDataCount(){
+//        String query = "SELECT * FROM "+ Utils.TABLE_NAME ;
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery( query ,null);
+//        int count = cursor.getCount();
+//        cursor.close();
+//        return count;
+//    }
 
 
 }
