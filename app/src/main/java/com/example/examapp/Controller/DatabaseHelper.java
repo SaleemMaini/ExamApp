@@ -113,7 +113,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("userName", data.getUserName());
         cv.put("password" , data.getPassword());
         cv.put("type" , data.getType());
-        long id = db.insert(TABLE1_NAME , null , cv));
+        long id = db.insert(TABLE1_NAME , null , cv);
         db.close();
         return  id;
     }
