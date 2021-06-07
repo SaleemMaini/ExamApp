@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         password = findViewById(R.id.editTextTextPassword2);
         username = findViewById(R.id.editTextTextPersonName2);
         login = findViewById(R.id.log);
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             new AdminController(this).create();
             new CourseController(this).create();
+            new StudentController(this).create();
 
 
             ContentValues values1 = new ContentValues();
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (password.getText().toString().isEmpty() || username.getText().toString().isEmpty()) {
                     Snackbar.make(activity, "Username or password not found", Snackbar.LENGTH_LONG).show();
+
                 } else if (username.getText().toString().toLowerCase().equals("admin")) {
 
                     boolean logged = new AdminController(MainActivity.this).login(username.getText().toString(), password.getText().toString());
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
                     boolean logged = new StudentController(MainActivity.this).login(username.getText().toString(), password.getText().toString());
                     if (logged) {
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), activity_courses.class));
                     } else {
                         Snackbar.make(activity, "Error in username or password", Snackbar.LENGTH_LONG).show();
                     }
