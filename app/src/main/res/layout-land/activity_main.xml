@@ -8,7 +8,7 @@
     android:isScrollContainer="false"
     android:orientation="vertical"
     android:verticalScrollbarPosition="defaultPosition"
-    tools:context=".MainActivity">
+    tools:context=".Views.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"

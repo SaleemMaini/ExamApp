@@ -1,4 +1,4 @@
-package com.example.examapp;
+package com.example.examapp.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,7 +13,7 @@ import android.widget.EditText;
 import com.example.examapp.Controller.AdminController;
 import com.example.examapp.Controller.StudentController;
 import com.example.examapp.Controller.CourseController;
-import com.example.examapp.Views.CoursesActivity;
+import com.example.examapp.R;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
             ContentValues values1 = new ContentValues();
             values1.put("username", "admin");
-            values1.put("password", "password");
+            values1.put("password", "admin");
             new AdminController(this).insert(values1);
 
             ContentValues values2 = new ContentValues();
             values2.put("username", "student");
-            values2.put("password", "password");
+            values2.put("password", "student");
             new StudentController(this).insert(values2);
         } catch (Exception e) {
         }
