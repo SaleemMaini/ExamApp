@@ -14,7 +14,7 @@ public class CoursesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acticity_courses);
+        setContentView(R.layout.activity_courses);
 
         findViewById(R.id.button9).setOnClickListener(new View.OnClickListener() {
             @Override
