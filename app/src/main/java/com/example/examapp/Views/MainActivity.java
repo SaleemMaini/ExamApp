@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                     boolean logged = new AdminController(MainActivity.this).login(username.getText().toString(), password.getText().toString());
                     if (logged) {
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), AdminDashboardActivity.class));
                     } else {
                         Snackbar.make(activity, "Error in username or password", Snackbar.LENGTH_LONG).show();
                     }
