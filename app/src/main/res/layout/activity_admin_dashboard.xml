@@ -17,7 +17,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="270dp"
-            android:background="@drawable/login_bg">
+            android:background="@drawable/header_bg">
 
             <ImageView
                 android:layout_width="77dp"
@@ -31,9 +31,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="170dp"
+                android:layout_marginTop="165dp"
                 android:capitalize="none"
-                android:text="Select Course"
+                android:text="Dashboard"
                 android:textColor="@color/white"
                 android:textSize="25dp" />
 
@@ -48,18 +48,24 @@
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="250dp"
-                android:layout_height="120dp"
+                android:layout_width="270dp"
+                android:layout_height="170dp"
+                android:layout_marginBottom="35dp"
                 android:capitalize="none"
                 android:text="Question Mangment"
-                app:backgroundTint="@color/second" />
+                app:backgroundTint="@color/second"
+                app:icon="@drawable/question_mangment_icon"
+                app:iconSize="30dp" />
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="250dp"
-                android:layout_height="120dp"
-                android:text="Student Mangment"
-                app:backgroundTint="@color/second" />
+                android:layout_width="270dp"
+                android:layout_height="170dp"
+                android:text="View student marks"
+                app:backgroundTint="@color/second"
+                app:icon="@drawable/student_marks_icon"
+                app:iconPadding="8dp"
+                app:iconSize="30dp" />
 
         </LinearLayout>
 

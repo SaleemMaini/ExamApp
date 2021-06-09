@@ -23,7 +23,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="270dp"
-                android:background="@drawable/login_bg">
+                android:background="@drawable/header_bg">
 
                 <ImageView
                     android:layout_width="77dp"
