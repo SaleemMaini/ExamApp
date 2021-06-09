@@ -28,14 +28,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        password = findViewById(R.id.editTextTextPassword2);
-        username = findViewById(R.id.editTextTextPersonName2);
+        password = findViewById(R.id.password);
+        username = findViewById(R.id.username);
         login = findViewById(R.id.log);
         activity = findViewById(R.id.activity);
 
         try {
             new AdminController(this).create();
-            new CourseController(this).create();
             new StudentController(this).create();
 
 
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             new AdminController(this).insert(values1);
 
             ContentValues values2 = new ContentValues();
-            values2.put("username", "student");
+            values2.put("username","student");
             values2.put("password", "student");
             new StudentController(this).insert(values2);
         } catch (Exception e) {
