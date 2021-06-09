@@ -9,5 +9,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Course4" />
+        android:text="Course4"
+        android:layout_gravity="center"
+        />
 </FrameLayout>
