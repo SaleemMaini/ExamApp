@@ -1,4 +1,5 @@
 package com.example.examapp.Views;
+import com.example.examapp.QuestionAddOrModify;
 import com.example.examapp.R;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,12 @@ public class AdminDashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), QuestionMangmentActivity.class));
+            }
+        });
+        findViewById(R.id.btn_VSM).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), QuestionAddOrModify.class));
             }
         });
     }

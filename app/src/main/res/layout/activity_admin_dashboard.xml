@@ -58,7 +58,7 @@
                 app:iconSize="30dp" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_VSM"
                 android:layout_width="270dp"
                 android:layout_height="120dp"
                 android:text="View student marks"
