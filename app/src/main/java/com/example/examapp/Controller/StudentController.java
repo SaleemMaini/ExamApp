@@ -14,7 +14,14 @@ import java.util.List;
 
 public class StudentController extends BaseController {
 
-    public static final String create = "CREATE TABLE IF NOT EXISTS student(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, fname TEXT, lname TEXT, username TEXT UNIQUE, password TEXT UNIQUE, id_exam INTEGER)";
+    public static final String create = "CREATE TABLE IF NOT EXISTS student(\"id\"\tINTEGER,\n" +
+            "\t\"name\"\tTEXT,\n" +
+            "\t\"fname\"\tTEXT,\n" +
+            "\t\"lname\"\tTEXT,\n" +
+            "\t\"username\"\tTEXT  UNIQUE,\n" +
+            "\t\"password\"\tINTEGER  UNIQUE,\n" +
+            "\t\"id_exam\"\tINTEGER,\n" +
+            "\tPRIMARY KEY(\"id\"))";
 
     public StudentController(AppCompatActivity activity) {
         super(activity);

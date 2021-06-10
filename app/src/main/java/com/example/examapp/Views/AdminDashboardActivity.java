@@ -1,5 +1,4 @@
 package com.example.examapp.Views;
-import com.example.examapp.QuestionAddOrModify;
 import com.example.examapp.R;
 import androidx.appcompat.app.AppCompatActivity;
 

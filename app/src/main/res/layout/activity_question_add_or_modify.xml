@@ -4,51 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuestionAddOrModify">
+    tools:context=".Views.QuestionAddOrModify">
 
     <Button
         android:id="@+id/E4"
-        android:layout_width="63dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="252dp"
+        android:layout_width="53dp"
+        android:layout_height="38dp"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.982"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.974"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.617" />
 
     <Button
         android:id="@+id/E1"
-        android:layout_width="63dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="460dp"
+        android:layout_width="53dp"
+        android:layout_height="38dp"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.982"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.974"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.314" />
 
     <Button
         android:id="@+id/E3"
-        android:layout_width="63dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="324dp"
+        android:layout_width="53dp"
+        android:layout_height="38dp"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.982"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.974"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.513" />
 
     <Button
         android:id="@+id/E2"
-        android:layout_width="63dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="396dp"
+        android:layout_width="53dp"
+        android:layout_height="38dp"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.982"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.974"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.412" />
 
     <Button
         android:id="@+id/button3"
@@ -64,7 +68,7 @@
         android:id="@+id/textView6"
         android:layout_width="332dp"
         android:layout_height="62dp"
-        android:text="TextView"
+        android:text="E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -75,8 +79,9 @@
         android:layout_height="47dp"
         android:layout_marginTop="68dp"
         android:ems="10"
+        android:gravity="center"
+        android:hint="QuestionText"
         android:inputType="textPersonName"
-        android:text="QuestionText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,8 +89,8 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="342dp"
-        android:layout_height="303dp"
+        android:layout_width="345dp"
+        android:layout_height="284dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -96,28 +101,28 @@
         <RadioButton
             android:id="@+id/radioButton1"
             android:layout_width="match_parent"
-            android:layout_height="67dp"
+            android:layout_height="70dp"
             android:editable="true"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="70dp"
             android:editable="true"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
-            android:layout_height="71dp"
+            android:layout_height="70dp"
             android:editable="true"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/radioButton4"
             android:layout_width="match_parent"
-            android:layout_height="78dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="0dp"
             android:editable="true"
             android:text="RadioButton" />
@@ -129,8 +134,9 @@
         android:layout_width="168dp"
         android:layout_height="58dp"
         android:ems="10"
+        android:gravity="center"
+        android:hint="Mark"
         android:inputType="textPersonName"
-        android:text="Mark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,7 +144,7 @@
         app:layout_constraintVertical_bias="0.18" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonsv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"

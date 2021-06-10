@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/HiddenTitleTheme">
-        <activity android:name=".QuestionAddOrModify">
+        <activity android:name=".Views.QuestionAddOrModify">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

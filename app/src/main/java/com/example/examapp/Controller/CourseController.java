@@ -15,7 +15,12 @@ public class CourseController extends BaseController {
     @Override
     public void create() {
         try {
-            String create = "CREATE TABLE IF NOT EXISTS course(id INTEGER PRIMARY KEY AUTOINCREMENT, type TEXT, id_question INTEGER, id_exam INTEGER);";
+            String create = "CREATE TABLE IF NOT EXISTS course(\"id\"\tINTEGER,\n" +
+                    "\t\"type\"\tTEXT,\n" +
+                    "\t\"id_question\"\tINTEGER,\n" +
+                    "\t\"id_exam\"\tINTEGER,\n" +
+                    "\tFOREIGN KEY(\"id_question\") REFERENCES \"question\"(\"id\"),\n" +
+                    "\tPRIMARY KEY(\"id\"));";
             new DatabaseHelper(getActivity()).execSQL(create);
         } catch (Exception e) {
         }

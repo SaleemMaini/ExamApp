@@ -1,9 +1,8 @@
-package com.example.examapp;
+package com.example.examapp.Views;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -11,15 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.example.examapp.Views.MainActivity;
+import com.example.examapp.R;
 
 public class QuestionAddOrModify extends AppCompatActivity {
-    Button btnEditDialog,btnEditDialog1,btnEditDialog2,btnEditDialog3;
+    Button btnEditDialog,btnEditDialog1,btnEditDialog2,btnEditDialog3,btnsv;
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +29,9 @@ public class QuestionAddOrModify extends AppCompatActivity {
         btnEditDialog1 = findViewById(R.id.E2);
         btnEditDialog2 = findViewById(R.id.E3);
         btnEditDialog3 = findViewById(R.id.E4);
+        btnsv = findViewById(R.id.buttonsv);
+
+
 
 
 
@@ -189,6 +191,14 @@ public class QuestionAddOrModify extends AppCompatActivity {
                 });
 
                 alertDialog.show();
+            }
+        });
+
+        btnsv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Qustion = editText.getText().toString();
+
             }
         });
 
