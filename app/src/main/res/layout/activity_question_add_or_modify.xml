@@ -7,7 +7,7 @@
     tools:context=".QuestionAddOrModify">
 
     <Button
-        android:id="@+id/button13"
+        android:id="@+id/E4"
         android:layout_width="63dp"
         android:layout_height="0dp"
         android:layout_marginBottom="252dp"
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/E1"
         android:layout_width="63dp"
         android:layout_height="0dp"
         android:layout_marginBottom="460dp"
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button12"
+        android:id="@+id/E3"
         android:layout_width="63dp"
         android:layout_height="0dp"
         android:layout_marginBottom="324dp"
@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/E2"
         android:layout_width="63dp"
         android:layout_height="0dp"
         android:layout_marginBottom="396dp"
@@ -71,8 +71,8 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="359dp"
+        android:layout_height="47dp"
         android:layout_marginTop="68dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -94,7 +94,7 @@
         app:layout_constraintVertical_bias="0.282">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioButton1"
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:editable="true"
@@ -126,8 +126,8 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName4"
-        android:layout_width="297dp"
-        android:layout_height="69dp"
+        android:layout_width="168dp"
+        android:layout_height="58dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Mark"
