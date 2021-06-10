@@ -1,20 +1,23 @@
 package com.example.examapp.Views;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.examapp.Controller.PagerAdapter;
+import com.example.examapp.Model.Data_Question;
 import com.example.examapp.R;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-public class QuestionMangmentActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
+public class QuestionMangmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,4 +56,5 @@ public class QuestionMangmentActivity extends AppCompatActivity {
                 tabLayout.selectTab(tabLayout.getTabAt(position));}
         });
     }
+
 }
