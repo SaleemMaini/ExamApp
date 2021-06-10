@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class Course1 extends Fragment {
     View v;
-    private RecyclerView course1_RecyclerView;
+    RecyclerView course1_RecyclerView;
     private List<Data_Question> course1QuestionList;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,7 +76,8 @@ public class Course1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        course1_RecyclerView = (RecyclerView) v.findViewById(R.id.course1RecyclerView);
+        v = inflater.inflate(R.layout.fragment_course1,container,false);
+        course1_RecyclerView = (RecyclerView) v.findViewById(R.id.rv);
         RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),course1QuestionList);
         course1_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         course1_RecyclerView.setAdapter(recyclerViewAdapter);

@@ -31,6 +31,10 @@ public class Data_Student {
         this.id_exam = id_exam;
     }
 
+    public Data_Student(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public int getId() {
         return id;

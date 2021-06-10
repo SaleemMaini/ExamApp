@@ -6,25 +6,32 @@ public class Data_Admin {
     public String fname;
     public String lname;
     public String username;
+    public String password;
 
     public Data_Admin() {
     }
 
-    public Data_Admin(int id, String name, String fname, String lname, String username) {
+    public Data_Admin(int id, String name, String fname, String lname, String username, String password) {
         this.id = id;
         this.name = name;
         this.fname = fname;
         this.lname = lname;
         this.username = username;
+        this.password = password;
     }
 
-    public Data_Admin(String name, String fname, String lname, String username) {
+    public Data_Admin(String name, String fname, String lname, String username, String password) {
         this.name = name;
         this.fname = fname;
         this.lname = lname;
         this.username = username;
+        this.password = password;
     }
 
+    public Data_Admin(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public int getId() {
         return id;
