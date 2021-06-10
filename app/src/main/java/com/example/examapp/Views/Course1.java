@@ -2,10 +2,14 @@ package com.example.examapp.Views;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.service.carrier.CarrierMessagingService;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +29,8 @@ import java.util.List;
 public class Course1 extends Fragment {
     View v;
     RecyclerView course1_RecyclerView;
-    private List<Data_Question> course1QuestionList;
+    List<Data_Question> course1QuestionList;
+    RecyclerViewAdapter recyclerViewAdapter;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -65,9 +70,8 @@ public class Course1 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        course1QuestionList = new ArrayList<>();
-        course1QuestionList.add(new Data_Question("ffff",3,40,5));
+        course1QuestionList = new ArrayList<Data_Question>();
+        course1QuestionList.add(new Data_Question("ffff",50));
 
 
     }
@@ -76,12 +80,27 @@ public class Course1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         v = inflater.inflate(R.layout.fragment_course1,container,false);
-        course1_RecyclerView = (RecyclerView) v.findViewById(R.id.rv);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),course1QuestionList);
-        course1_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        course1_RecyclerView.setAdapter(recyclerViewAdapter);
-        return inflater.inflate(R.layout.fragment_course1, container, false);
+        return v;
+
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //Recycler
+        course1_RecyclerView = (RecyclerView) v.findViewById(R.id.rv);
+        LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
+        course1_RecyclerView.setLayoutManager(llm);
+        course1_RecyclerView.setHasFixedSize(true);
+
+
+        //Adapter
+        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),course1QuestionList);
+        course1_RecyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.notifyDataSetChanged();
+
+    }
 }

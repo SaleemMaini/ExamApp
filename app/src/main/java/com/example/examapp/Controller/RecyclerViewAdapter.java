@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.examapp.Model.Data_Question;
 import com.example.examapp.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
@@ -21,24 +22,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public RecyclerViewAdapter(Context context, List<Data_Question> questionList) {
         this.context = context;
-        this.questionList = questionList;
+        this.questionList = new ArrayList<Data_Question>(questionList);
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        v= LayoutInflater.from((context)).inflate(R.layout.question_item,parent,false);
-        MyViewHolder vHolder = new MyViewHolder(v);
-        return vHolder;
+        v= LayoutInflater.from(parent.getContext()).inflate(R.layout.question_item,parent,false);
+        return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.questionId.setText((questionList.get(position).getId()));
         holder.questionText.setText((questionList.get(position).getText()));
-        holder.questionMark.setText((questionList.get(position).getMark()));
+        holder.questionMark.setText((questionList.get(position).getMark() + ""));
     }
+
 
     @Override
     public int getItemCount() {
@@ -46,11 +46,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public  static class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView questionId,questionText,questionMark;
+        public TextView questionText,questionAnswerId,questionMark;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            questionId =  (TextView) itemView.findViewById(R.id.questionId);
-            questionText =  (TextView) itemView.findViewById(R.id.questionText);
+            questionText =  (TextView) itemView.findViewById(R.id.questionId);
             questionMark =  (TextView) itemView.findViewById(R.id.questionMark);
 
         }

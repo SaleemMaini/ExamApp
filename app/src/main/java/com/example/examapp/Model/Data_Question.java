@@ -25,6 +25,11 @@ public class Data_Question {
         this.id_course = id_course;
     }
 
+    public Data_Question(String text, int mark) {
+        this.text = text;
+        this.mark = mark;
+    }
+
     public Data_Question(String text) {
         this.text = text;
     }
