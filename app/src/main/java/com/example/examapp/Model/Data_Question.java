@@ -5,21 +5,24 @@ public class Data_Question {
     public String text;
     public int id_answer;
     public int mark;
+    public int id_course;
 
     public Data_Question() {
     }
 
-    public Data_Question(int id, String text, int id_answer, int mark) {
+    public Data_Question(int id, String text, int id_answer, int mark, int id_course) {
         this.id = id;
         this.text = text;
         this.id_answer = id_answer;
         this.mark = mark;
+        this.id_course = id_course;
     }
 
-    public Data_Question(String text, int id_answer, int mark) {
+    public Data_Question(String text, int id_answer, int mark, int id_course) {
         this.text = text;
         this.id_answer = id_answer;
         this.mark = mark;
+        this.id_course = id_course;
     }
 
     public Data_Question(String text) {

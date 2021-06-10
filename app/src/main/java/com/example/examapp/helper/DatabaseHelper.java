@@ -15,7 +15,7 @@ public class DatabaseHelper {
     public DatabaseHelper(AppCompatActivity activity) {
         this.activity = activity;
 
-        database = activity.openOrCreateDatabase("ExamApp", Context.MODE_PRIVATE, null);
+        database = activity.openOrCreateDatabase("ExamApp.db", Context.MODE_PRIVATE, null);
     }
 
     public void execSQL(String sql) {

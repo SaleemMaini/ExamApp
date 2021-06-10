@@ -19,7 +19,7 @@ import com.example.examapp.Model.Data_Student;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper1 extends SQLiteOpenHelper {
     public static final String DB_NAME = "ExamApp";
     public static final int DB_VERSION = 1;
     public static final String TABLE1_NAME = "account";
@@ -30,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE6_NAME = "course";
     public static final String TABLE7_NAME = "exam";
 
-    public DatabaseHelper(@Nullable Context context  ) {
+    public DatabaseHelper1(@Nullable Context context  ) {
         super(context, DB_NAME,null, Integer.parseInt(DB_NAME));
     }
 

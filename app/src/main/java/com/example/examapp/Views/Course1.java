@@ -67,7 +67,7 @@ public class Course1 extends Fragment {
         }
 
         course1QuestionList = new ArrayList<>();
-        course1QuestionList.add(new Data_Question("huillll",5,40));
+        course1QuestionList.add(new Data_Question("ffff",3,40,5));
 
 
     }
