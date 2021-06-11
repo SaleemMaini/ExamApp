@@ -16,7 +16,7 @@ public class QuestionController extends BaseController {
     @Override
     public void create() {
         try {
-            String create = "CREATE TABLE IF NOT EXISTS course(\"id\"\tINTEGER,\n" +
+            String create = "CREATE TABLE IF NOT EXISTS question(\"id\"\tINTEGER,\n" +
                     "\t\"text\"\tTEXT,\n" +
                     "\t\"id_answer\"\tINTEGER,\n" +
                     "\t\"mark\"\tINTEGER,\n" +
@@ -35,6 +35,6 @@ public class QuestionController extends BaseController {
 
     @Override
     public long insert(ContentValues values) {
-        return new DatabaseHelper(getActivity()).insertData("course", values);
+        return new DatabaseHelper(getActivity()).insertData("question", values);
     }
 }

@@ -3,22 +3,29 @@ package com.example.examapp.Views;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.examapp.Controller.QuestionController;
+import com.example.examapp.Model.Data_Question;
 import com.example.examapp.R;
+import com.google.android.material.snackbar.Snackbar;
 
 public class QuestionAddOrModify extends AppCompatActivity {
+
     Button btnEditDialog,btnEditDialog1,btnEditDialog2,btnEditDialog3,btnsv;
-    EditText editText;
+    EditText Qtxt,textMark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,7 +204,39 @@ public class QuestionAddOrModify extends AppCompatActivity {
         btnsv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Qustion = editText.getText().toString();
+                Qtxt = findViewById(R.id.Questiontxt);
+                textMark = findViewById(R.id.textMark);
+                String Qustion = Qtxt.getText().toString();
+                int RB;
+                String txtMark = textMark.getText().toString();
+                RadioButton RR1,RR2,RR3,RR4;
+                RR1 = findViewById(R.id.radioButton1);
+                RR2 = findViewById(R.id.radioButton3);
+                RR3 = findViewById(R.id.radioButton2);
+                RR4 = findViewById(R.id.radioButton4);
+                if(RR1.isChecked()){ RB = 1; }
+                if(RR2.isChecked()){ RB = 2; }
+                if(RR3.isChecked()){ RB = 3; }
+                if(RR4.isChecked()){ RB = 4; }
+//                if(RR3.isChecked()){ RB = RR4.getText().toString(); }
+
+                Data_Question DQ = new Data_Question();
+
+                ContentValues values = new ContentValues();
+                values.put("text", DQ.getText());
+                values.put("id_answer", DQ.getId_answer());
+                values.put("mark", DQ.getMark());
+                long inserted = new QuestionController(QuestionAddOrModify.this).insert(values);
+                if (inserted > 0) {
+                    Qtxt.setText("");
+                    textMark.setText("");
+                    RR1.setText("........................");
+                    RR2.setText("........................");
+                    RR3.setText("........................");
+                    RR4.setText("........................");
+                    Snackbar.make(findViewById(R.id.ConstraintLayout1), "Added successfully", Snackbar.LENGTH_LONG).show();
+                }
+
 
             }
         });
