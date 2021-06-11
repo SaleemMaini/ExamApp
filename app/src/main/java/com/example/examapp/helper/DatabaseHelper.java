@@ -26,8 +26,8 @@ public class DatabaseHelper {
         return database.rawQuery(sql, null);
     }
 
-    public long insertData(String tblName, ContentValues values) {
-        return database.insert(tblName, null, values);
+    public long insertData(String TableName, ContentValues values) {
+        return database.insert(TableName, null, values);
     }
 
     public void setActivity(AppCompatActivity activity) {

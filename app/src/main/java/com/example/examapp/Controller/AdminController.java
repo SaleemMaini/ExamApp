@@ -16,13 +16,7 @@ public class AdminController extends BaseController {
     @Override
     public void create() {
         try {
-            String create = "CREATE TABLE IF NOT EXISTS admin(\"id\"\tINTEGER,\n" +
-                    "\t\"name\"\tTEXT,\n" +
-                    "\t\"fname\"\tTEXT,\n" +
-                    "\t\"lname\"\tTEXT,\n" +
-                    "\t\"username\"\tTEXT  UNIQUE,\n" +
-                    "\t\"password\"\tTEXT  UNIQUE,\n" +
-                    "\tPRIMARY KEY(\"id\"));";
+            String create = "CREATE TABLE IF NOT EXISTS admin(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, fname TEXT, lname TEXT, username TEXT UNIQUE, password TEXT UNIQUE);";
             new DatabaseHelper(getActivity()).execSQL(create);
         } catch (Exception e) {
         }
