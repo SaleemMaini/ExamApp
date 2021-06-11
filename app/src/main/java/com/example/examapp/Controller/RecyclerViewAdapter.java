@@ -36,7 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.questionText.setText((questionList.get(position).getText()));
-        holder.questionMark.setText((questionList.get(position).getMark() + ""));
+        holder.questionMark.setText("Mark : " + (questionList.get(position).getMark() + ""));
     }
 
 
@@ -49,7 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public TextView questionText,questionAnswerId,questionMark;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            questionText =  (TextView) itemView.findViewById(R.id.questionId);
+            questionText =  (TextView) itemView.findViewById(R.id.questionText);
             questionMark =  (TextView) itemView.findViewById(R.id.questionMark);
 
         }

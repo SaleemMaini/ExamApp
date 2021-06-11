@@ -40,15 +40,15 @@ public class MainActivity extends AppCompatActivity {
             new QuestionController(this).create();
 
 
-            ContentValues values1 = new ContentValues();
-            values1.put("username","admin");
-            values1.put("password","admin");
-            new AdminController(this).insert(values1);
-
-            ContentValues values2 = new ContentValues();
-            values2.put("username","student");
-            values2.put("password","student");
-            new StudentController(this).insert(values2);
+//            ContentValues values1 = new ContentValues();
+//            values1.put("username","admin");
+//            values1.put("password","admin");
+//            new AdminController(this).insert(values1);
+//
+//            ContentValues values2 = new ContentValues();
+//            values2.put("username","student");
+//            values2.put("password","student");
+//            new StudentController(this).insert(values2);
         } catch (Exception e) {
         }
 

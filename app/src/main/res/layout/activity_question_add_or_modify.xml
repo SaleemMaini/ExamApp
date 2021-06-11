@@ -1,160 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ConstraintLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Views.ActivityQuestionAddOrModify">
-
-    <Button
-        android:id="@+id/E4"
-        android:layout_width="53dp"
-        android:layout_height="38dp"
-        android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.974"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617" />
-
-    <Button
-        android:id="@+id/E1"
-        android:layout_width="53dp"
-        android:layout_height="38dp"
-        android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.974"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314" />
-
-    <Button
-        android:id="@+id/E3"
-        android:layout_width="53dp"
-        android:layout_height="38dp"
-        android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.974"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513" />
-
-    <Button
-        android:id="@+id/E2"
-        android:layout_width="53dp"
-        android:layout_height="38dp"
-        android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.974"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="332dp"
-        android:layout_height="62dp"
-        android:text="E"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Edit or modify question" />
 
     <EditText
         android:id="@+id/Questiontxt"
-        android:layout_width="359dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
-        android:gravity="center"
         android:hint="QuestionText"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="345dp"
-        android:layout_height="284dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Questiontxt"
-        app:layout_constraintVertical_bias="0.282">
-
-        <RadioButton
-            android:id="@+id/radioButton1"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:editable="true"
-            android:text="RadioButton" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:editable="true"
-            android:text="RadioButton" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:editable="true"
-            android:text="RadioButton" />
-
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginLeft="0dp"
-            android:editable="true"
-            android:text="RadioButton" />
-
-    </RadioGroup>
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/textMark"
         android:layout_width="168dp"
         android:layout_height="58dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
-        android:gravity="center"
         android:hint="Mark"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintVertical_bias="0.18" />
+        android:inputType="textPersonName" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:editable="true"
+                android:text="RadioButton" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:editable="true"
+                android:text="RadioButton" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:editable="true"
+                android:text="RadioButton" />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginLeft="0dp"
+                android:editable="true"
+                android:text="RadioButton" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/E1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="17dp"
+                android:background="#00FFFFFF"
+                android:shadowColor="#00FFFFFF"
+                app:backgroundTint="#00FFFFFF"
+                app:icon="@drawable/edit"
+                app:iconSize="25dp"
+                app:iconTint="@color/main" />
+
+            <Button
+                android:id="@+id/E2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="17dp"
+                android:background="#00FFFFFF"
+                app:backgroundTint="#00FFFFFF"
+                app:icon="@drawable/edit"
+                app:iconSize="25dp"
+                app:iconTint="@color/main" />
+
+            <Button
+                android:id="@+id/E3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="17dp"
+                android:background="#00FFFFFF"
+                app:backgroundTint="#00FFFFFF"
+                app:icon="@drawable/edit"
+                app:iconSize="25dp"
+                app:iconTint="@color/main" />
+
+            <Button
+                android:id="@+id/E4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="17dp"
+                android:background="#00FFFFFF"
+                app:backgroundTint="#00FFFFFF"
+                app:icon="@drawable/edit"
+                app:iconSize="25dp"
+                app:iconTint="@color/main" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/buttonsv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="48dp"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textMark"
-        app:layout_constraintVertical_bias="1.0" />
+        android:text="Save" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -70,8 +70,12 @@ public class Course1 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
         course1QuestionList = new ArrayList<Data_Question>();
+//        Add Data Here
         course1QuestionList.add(new Data_Question("ffff",50));
+        course1QuestionList.add(new Data_Question("ffffss",10));
+        course1QuestionList.add(new Data_Question("fffsadsasdasdasdasdasdsdadsadasdsasdasdasdsadadsssdadadaafss",10));
 
 
     }
@@ -95,7 +99,6 @@ public class Course1 extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
         course1_RecyclerView.setLayoutManager(llm);
         course1_RecyclerView.setHasFixedSize(true);
-
 
         //Adapter
         recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),course1QuestionList);
