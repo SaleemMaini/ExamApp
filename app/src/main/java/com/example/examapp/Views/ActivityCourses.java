@@ -1,13 +1,13 @@
 package com.example.examapp.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.examapp.R;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.examapp.R;
-
-public class activity_courses extends AppCompatActivity {
+public class ActivityCourses extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,5 @@ public class activity_courses extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
-
     }
 }
