@@ -2,13 +2,22 @@ package com.example.examapp.Views;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.examapp.Controller.RecyclerViewAdapter;
+import com.example.examapp.Model.Data_Question;
 import com.example.examapp.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +25,11 @@ import com.example.examapp.R;
  * create an instance of this fragment.
  */
 public class Course2 extends Fragment {
+    View v;
+    RecyclerView course2_RecyclerView;
+    List<Data_Question> course2QuestionList;
+    RecyclerViewAdapter recyclerViewAdapter;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,12 +69,36 @@ public class Course2 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        course2QuestionList = new ArrayList<Data_Question>();
+//        Add Data Here
+        course2QuestionList.add(new Data_Question("2222",90));
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_course2, container, false);
+        v = inflater.inflate(R.layout.fragment_course2,container,false);
+        return v;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //Recycler
+        course2_RecyclerView = (RecyclerView) v.findViewById(R.id.rvCourse2);
+        LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
+        course2_RecyclerView.setLayoutManager(llm);
+        course2_RecyclerView.setHasFixedSize(true);
+
+        //Adapter
+        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),course2QuestionList);
+        course2_RecyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.notifyDataSetChanged();
+
+    }
+
 }

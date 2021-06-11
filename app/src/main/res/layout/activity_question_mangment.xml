@@ -39,10 +39,12 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="677dp"
+        android:layout_height="620dp"
         android:layout_below="@+id/tabBar"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="-4dp" />
+        android:layout_marginTop="-2dp"
+        android:layout_marginBottom="65dp" >
+
+    </androidx.viewpager2.widget.ViewPager2>
 
 </RelativeLayout>

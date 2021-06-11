@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <!--    mainColor-->
-    <color name="main">#92220f</color>
+    <color name="red">#92220f</color>
     <!--    secondColor-->
-    <color name="second">#183041</color>
+    <color name="darkBlue">#183041</color>
 </resources>

@@ -5,11 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.service.carrier.CarrierMessagingService;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,7 +93,7 @@ public class Course1 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //Recycler
-        course1_RecyclerView = (RecyclerView) v.findViewById(R.id.rv);
+        course1_RecyclerView = (RecyclerView) v.findViewById(R.id.rvCourse1);
         LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
         course1_RecyclerView.setLayoutManager(llm);
         course1_RecyclerView.setHasFixedSize(true);

@@ -80,7 +80,7 @@
                     android:layout_marginTop="50dp"
                     android:layout_marginBottom="30dp"
                     android:text="login"
-                    app:backgroundTint="@color/second" />
+                    app:backgroundTint="?attr/colorPrimaryVariant" />
             </LinearLayout>
 
         </LinearLayout>

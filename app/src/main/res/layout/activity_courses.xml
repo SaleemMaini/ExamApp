@@ -55,7 +55,7 @@
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
                     android:text="Button"
-                    app:backgroundTint="@color/second" />
+                    app:backgroundTint="?attr/colorPrimaryVariant" />
 
                 <Button
                     android:id="@+id/button9"
@@ -63,7 +63,7 @@
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
                     android:text="Button"
-                    app:backgroundTint="@color/second" />
+                    app:backgroundTint="?attr/colorPrimaryVariant" />
             </LinearLayout>
 
             <LinearLayout
@@ -76,7 +76,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    app:backgroundTint="@color/second"
+                    app:backgroundTint="?attr/colorPrimaryVariant"
                     app:icon="@drawable/logo"
                     app:iconGravity="textTop"
                     app:iconSize="80dp" />
@@ -87,7 +87,7 @@
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
                     android:text="Button"
-                    app:backgroundTint="@color/second" />
+                    app:backgroundTint="?attr/colorPrimaryVariant" />
             </LinearLayout>
         </LinearLayout>
 
