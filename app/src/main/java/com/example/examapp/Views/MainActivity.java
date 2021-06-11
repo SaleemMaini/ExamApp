@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(activity, "Error in username or password", Snackbar.LENGTH_LONG).show();
                 }
 
+            }else {
+                Snackbar.make(activity, "Don't Forget Any Field", Snackbar.LENGTH_LONG).show();
             }
 
         });
