@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean logged = new AdminController(MainActivity.this).login(username.getText().toString(), password.getText().toString());
                 if (logged) {
-                    startActivity(new Intent(getApplicationContext(), AdminDashboardActivity.class));
+                    startActivity(new Intent(getApplicationContext(), ActivityAdminDashboard.class));
                 } else {
                     Snackbar.make(activity, "Error in username or password", Snackbar.LENGTH_LONG).show();
                 }
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean logged = new StudentController(MainActivity.this).login(username.getText().toString(), password.getText().toString());
                 if (logged) {
-                    startActivity(new Intent(getApplicationContext(), activity_courses.class));
+                    startActivity(new Intent(getApplicationContext(), ActivityCourses.class));
                 } else {
                     Snackbar.make(activity, "Error in username or password", Snackbar.LENGTH_LONG).show();
                 }
