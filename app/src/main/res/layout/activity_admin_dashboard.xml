@@ -17,7 +17,8 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="270dp"
-            android:background="@drawable/header_bg">
+            android:background="@drawable/header_bg"
+            android:backgroundTint="@color/red">
 
             <ImageView
                 android:layout_width="77dp"

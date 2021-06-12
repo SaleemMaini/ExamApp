@@ -1,5 +1,6 @@
 package com.example.examapp.Views;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.examapp.Controller.RecyclerViewAdapter;
 import com.example.examapp.Model.Data_Question;
 import com.example.examapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ public class Course1 extends Fragment {
     RecyclerView course1_RecyclerView;
     List<Data_Question> course1QuestionList;
     RecyclerViewAdapter recyclerViewAdapter;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -76,6 +79,7 @@ public class Course1 extends Fragment {
         course1QuestionList.add(new Data_Question("fffsadsasdasdasdasdasdsdadsadasdsasdasdasdsadadsssdadadaafss",10));
 
 
+
     }
 
     @Override
@@ -102,6 +106,7 @@ public class Course1 extends Fragment {
         recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),course1QuestionList);
         course1_RecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();
+
 
     }
 }
