@@ -21,6 +21,9 @@ import com.example.examapp.R;
 import com.example.examapp.Views.ActivityQuestionAddOrModify;
 import com.example.examapp.Views.ActivityQuestionMangment;
 import com.example.examapp.Views.Course1;
+import com.example.examapp.Views.Course2;
+import com.example.examapp.Views.Course3;
+import com.example.examapp.Views.Course4;
 import com.example.examapp.helper.DatabaseHelper;
 import com.example.examapp.helper.DatabaseHelper1;
 
@@ -100,6 +103,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         DBH.deleteDataFromQuestion(questionList.get(position));
         questionList.remove(position);
         Course1.notifyAdapter();
+        Course2.notifyAdapter();
+        Course3.notifyAdapter();
+        Course4.notifyAdapter();
     }
 
 

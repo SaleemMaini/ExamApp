@@ -36,7 +36,6 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class Course1 extends Fragment {
-
     View v;
     RecyclerView course1_RecyclerView;
     List<Data_Question> course1QuestionList;
@@ -77,7 +76,6 @@ public class Course1 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -134,6 +132,7 @@ public class Course1 extends Fragment {
         course1_RecyclerView.setLayoutManager(llm);
         course1_RecyclerView.setHasFixedSize(true);
 
+        //Adapter
         recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),databaseHelper1.getAllData(),databaseHelper1);
         course1_RecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();
