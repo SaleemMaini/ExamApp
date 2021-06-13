@@ -8,6 +8,7 @@ import com.example.examapp.R;
 import com.example.examapp.helper.DatabaseHelper1;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,6 +17,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -25,17 +29,23 @@ import android.widget.Toast;
 
 import com.example.examapp.Model.Data_Question;
 
-public class ActivityQuestionAddOrModify extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ActivityQuestionAddOrModify extends AppCompatActivity  {
 
     Button btnEditDialog,btnEditDialog1,btnEditDialog2,btnEditDialog3,btnadd,btnsv;
     EditText Qtxt,textMark;
     TextView textView6;
+
     Spinner spinnerCourses;
+
     DatabaseHelper1  DatabaseHelper1;
     Data_Question QuestionInfo;
     int position;
     String str_position;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,10 +77,10 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                 EditText editText1;
                 Button btn1;
 
-                RadioButton RR1,RR2,RR3,RR4;
+                RadioButton RR1, RR2, RR3, RR4;
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ActivityQuestionAddOrModify.this);
-                View view1 = LayoutInflater.from(ActivityQuestionAddOrModify.this).inflate(R.layout.aleredittxml,viewGroup,false);
+                View view1 = LayoutInflater.from(ActivityQuestionAddOrModify.this).inflate(R.layout.aleredittxml, viewGroup, false);
                 builder.setCancelable(false);
                 builder.setView(view1);
 
@@ -89,7 +99,7 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(ActivityQuestionAddOrModify.this,"Done",Toast.LENGTH_LONG).show();
+                        Toast.makeText(ActivityQuestionAddOrModify.this, "Done", Toast.LENGTH_LONG).show();
                         RR1.setText(editText1.getText());
                         alertDialog.hide();
 
@@ -112,7 +122,7 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                 RadioButton RR2;
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ActivityQuestionAddOrModify.this);
-                View view1 = LayoutInflater.from(ActivityQuestionAddOrModify.this).inflate(R.layout.aleredittxml,viewGroup,false);
+                View view1 = LayoutInflater.from(ActivityQuestionAddOrModify.this).inflate(R.layout.aleredittxml, viewGroup, false);
                 builder.setCancelable(false);
                 builder.setView(view1);
 
@@ -128,7 +138,7 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(ActivityQuestionAddOrModify.this,"Done",Toast.LENGTH_LONG).show();
+                        Toast.makeText(ActivityQuestionAddOrModify.this, "Done", Toast.LENGTH_LONG).show();
                         RR2.setText(editText1.getText());
                         alertDialog.hide();
 
@@ -151,7 +161,7 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                 RadioButton RR3;
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ActivityQuestionAddOrModify.this);
-                View view1 = LayoutInflater.from(ActivityQuestionAddOrModify.this).inflate(R.layout.aleredittxml,viewGroup,false);
+                View view1 = LayoutInflater.from(ActivityQuestionAddOrModify.this).inflate(R.layout.aleredittxml, viewGroup, false);
                 builder.setCancelable(false);
                 builder.setView(view1);
 
@@ -167,7 +177,7 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(ActivityQuestionAddOrModify.this,"Done",Toast.LENGTH_LONG).show();
+                        Toast.makeText(ActivityQuestionAddOrModify.this, "Done", Toast.LENGTH_LONG).show();
                         RR3.setText(editText1.getText());
                         alertDialog.hide();
 
@@ -190,7 +200,7 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                 RadioButton RR4;
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ActivityQuestionAddOrModify.this);
-                View view1 = LayoutInflater.from(ActivityQuestionAddOrModify.this).inflate(R.layout.aleredittxml,viewGroup,false);
+                View view1 = LayoutInflater.from(ActivityQuestionAddOrModify.this).inflate(R.layout.aleredittxml, viewGroup, false);
                 builder.setCancelable(false);
                 builder.setView(view1);
 
@@ -206,7 +216,7 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(ActivityQuestionAddOrModify.this,"Done",Toast.LENGTH_LONG).show();
+                        Toast.makeText(ActivityQuestionAddOrModify.this, "Done", Toast.LENGTH_LONG).show();
                         RR4.setText(editText1.getText());
                         alertDialog.hide();
 
@@ -225,15 +235,25 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                 String Qustion = Qtxt.getText().toString();
                 int RB = 0;
                 String txtMark = textMark.getText().toString();
-                RadioButton RR1,RR2,RR3,RR4;
+                RadioButton RR1, RR2, RR3, RR4;
                 RR1 = findViewById(R.id.radioButton1);
                 RR2 = findViewById(R.id.radioButton3);
                 RR3 = findViewById(R.id.radioButton2);
                 RR4 = findViewById(R.id.radioButton4);
-                if(RR1.isChecked()){ RB = 1; }
-                if(RR2.isChecked()){ RB = 2; }
-                if(RR3.isChecked()){ RB = 3; }
-                if(RR4.isChecked()){ RB = 4; }
+                int idCourse = spinnerCourses.getSelectedItemPosition();
+
+                if (RR1.isChecked()) {
+                    RB = 1;
+                }
+                if (RR2.isChecked()) {
+                    RB = 2;
+                }
+                if (RR3.isChecked()) {
+                    RB = 3;
+                }
+                if (RR4.isChecked()) {
+                    RB = 4;
+                }
 //                if(RR3.isChecked()){ RB = RR4.getText().toString(); }
 
                 Data_Question DQ = new Data_Question();
@@ -242,6 +262,7 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                 values.put("text", Qustion);
                 values.put("id_answer", RB);
                 values.put("mark", txtMark);
+                values.put("id_course", idCourse);
                 long inserted = new QuestionController(ActivityQuestionAddOrModify.this).insert(values);
                 if (inserted > 0) {
                     Qtxt.setText("");
@@ -251,7 +272,7 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                     RR3.setText("........................");
                     RR4.setText("........................");
                     Snackbar.make(findViewById(R.id.ConstraintLayout1), "Added successfully", Snackbar.LENGTH_LONG).show();
-                    Intent intent = new Intent(ActivityQuestionAddOrModify.this,ActivityQuestionMangment.class);
+                    Intent intent = new Intent(ActivityQuestionAddOrModify.this, ActivityQuestionMangment.class);
                     startActivity(intent);
                     finish();
                 }
@@ -302,7 +323,23 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
 
         // Spinner Courses
         spinnerCourses = (Spinner) findViewById(R.id.spinnerCourses);
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.courses, android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCourses.setAdapter(spinnerAdapter);
 
+        spinnerCourses.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String text = parent.getItemAtPosition(position).toString();
+                Toast.makeText(parent.getContext(),text,Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                spinnerCourses.setSelection(0);
+            }
+        });
 
     }
 

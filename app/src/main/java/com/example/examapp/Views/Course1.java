@@ -87,17 +87,17 @@ public class Course1 extends Fragment {
 
         //Adapter
         databaseHelper1 = new DatabaseHelper1(getActivity());
-        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),databaseHelper1.getAllData(),databaseHelper1);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),databaseHelper1.getCourse1Questions(),databaseHelper1);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
 //        course1_RecyclerView.setLayoutManager(layoutManager);
 //        course1_RecyclerView.setItemAnimator(new DefaultItemAnimator());
 //        course1_RecyclerView.setAdapter(recyclerViewAdapter);
 
-        List<Data_Question> mydata = databaseHelper1.getAllData();
-        for(Data_Question data : mydata){
-            String myInfo = " Text: "+data.getText()+" Mark : "+data.getMark();
-            Log.d("data", myInfo);
-        }
+//        List<Data_Question> mydata = databaseHelper1.getAllData();
+//        for(Data_Question data : mydata){
+//            String myInfo = " Text: "+data.getText()+" Mark : "+data.getMark();
+//            Log.d("data", myInfo);
+//        }
 
 //        course1QuestionList = databaseHelper1.getAllData();
 //        course1QuestionList= new ArrayList<Data_Question>(databaseHelper1.getAllData());
@@ -133,7 +133,6 @@ public class Course1 extends Fragment {
         course1_RecyclerView.setHasFixedSize(true);
 
         //Adapter
-        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),databaseHelper1.getAllData(),databaseHelper1);
         course1_RecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();
     }

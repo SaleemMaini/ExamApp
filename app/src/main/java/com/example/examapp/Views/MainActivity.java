@@ -44,11 +44,12 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
         }
 
-        ContentValues values = new ContentValues();
-        values.put("text","fdghrthy");
-        values.put("id_answer",2);
-        values.put("mark",4);
-        new QuestionController(this).insert(values);
+//        ContentValues values = new ContentValues();
+//        values.put("text","question for course 1");
+//        values.put("id_answer",2);
+//        values.put("mark",4);
+//        values.put("id_course",0);
+//        new QuestionController(this).insert(values);
 
 
         ContentValues values1 = new ContentValues();

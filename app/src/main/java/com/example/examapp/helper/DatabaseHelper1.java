@@ -297,17 +297,86 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         if(cursor.moveToFirst())
           do{
               Data_Question data1 = new Data_Question();
-//              data1.setId(cursor.getInt(cursor.getColumnIndex("id")));
               data1.setText( cursor.getString(cursor.getColumnIndex("text")));
-//              data1.setId_answer(cursor.getInt(cursor.getColumnIndex("id_answer")));
               data1.setMark(cursor.getInt(cursor.getColumnIndex("mark")));
-//              data1.setId_course(cursor.getInt(cursor.getColumnIndex("id_course")));
               allData.add(data1);
 
           }while (cursor.moveToNext());
         db.close();
         return allData;
     }
+
+    public List<Data_Question> getCourse1Questions() {
+        List<Data_Question> allData = new ArrayList<>();
+        String query = "SELECT text,mark FROM " + TABLE4_NAME + " WHERE id_course = " + 0;
+//                + " ORDER BY " + "text" + " DESC"; //  query must be completed
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery( query ,null);
+        if(cursor.moveToFirst())
+            do{
+                Data_Question data1 = new Data_Question();
+                data1.setText( cursor.getString(cursor.getColumnIndex("text")));
+                data1.setMark(cursor.getInt(cursor.getColumnIndex("mark")));
+                allData.add(data1);
+
+            }while (cursor.moveToNext());
+        db.close();
+        return allData;
+    }
+    public List<Data_Question> getCourse2Questions() {
+        List<Data_Question> allData = new ArrayList<>();
+        String query = "SELECT text,mark FROM " + TABLE4_NAME + " WHERE id_course = " + 1;
+//                + " ORDER BY " + "text" + " DESC"; //  query must be completed
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery( query ,null);
+        if(cursor.moveToFirst())
+            do{
+                Data_Question data1 = new Data_Question();
+                data1.setText( cursor.getString(cursor.getColumnIndex("text")));
+                data1.setMark(cursor.getInt(cursor.getColumnIndex("mark")));
+                allData.add(data1);
+
+            }while (cursor.moveToNext());
+        db.close();
+        return allData;
+    }
+    public List<Data_Question> getCourse3Questions() {
+        List<Data_Question> allData = new ArrayList<>();
+        String query = "SELECT text,mark FROM " + TABLE4_NAME + " WHERE id_course = " + 2;
+//                + " ORDER BY " + "text" + " DESC"; //  query must be completed
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery( query ,null);
+        if(cursor.moveToFirst())
+            do{
+                Data_Question data1 = new Data_Question();
+                data1.setText( cursor.getString(cursor.getColumnIndex("text")));
+                data1.setMark(cursor.getInt(cursor.getColumnIndex("mark")));
+                allData.add(data1);
+
+            }while (cursor.moveToNext());
+        db.close();
+        return allData;
+    }
+    public List<Data_Question> getCourse4Questions() {
+        List<Data_Question> allData = new ArrayList<>();
+        String query = "SELECT text,mark FROM " + TABLE4_NAME + " WHERE id_course = " + 3;
+//                + " ORDER BY " + "text" + " DESC"; //  query must be completed
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery( query ,null);
+        if(cursor.moveToFirst())
+            do{
+                Data_Question data1 = new Data_Question();
+                data1.setText( cursor.getString(cursor.getColumnIndex("text")));
+                data1.setMark(cursor.getInt(cursor.getColumnIndex("mark")));
+                allData.add(data1);
+
+            }while (cursor.moveToNext());
+        db.close();
+        return allData;
+    }
+
+
+
 
 
 
