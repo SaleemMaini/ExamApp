@@ -33,24 +33,34 @@ public class MainActivity extends AppCompatActivity {
         login = findViewById(R.id.login);
         activity = findViewById(R.id.activity);
 
+
+
         try {
             new AdminController(this).create();
             new StudentController(this).create();
             new CourseController(this).create();
             new QuestionController(this).create();
 
-
-//            ContentValues values1 = new ContentValues();
-//            values1.put("username","admin");
-//            values1.put("password","admin");
-//            new AdminController(this).insert(values1);
-//
-//            ContentValues values2 = new ContentValues();
-//            values2.put("username","student");
-//            values2.put("password","student");
-//            new StudentController(this).insert(values2);
         } catch (Exception e) {
         }
+
+        ContentValues values = new ContentValues();
+        values.put("text","fdghrthy");
+        values.put("id_answer",2);
+        values.put("mark",4);
+        new QuestionController(this).insert(values);
+
+
+        ContentValues values1 = new ContentValues();
+        values1.put("username","admin");
+        values1.put("password","admin");
+        new AdminController(this).insert(values1);
+
+        ContentValues values2 = new ContentValues();
+        values2.put("username","student");
+        values2.put("password","student");
+        new StudentController(this).insert(values2);
+
 
         login.setOnClickListener(v -> {
             if (password.getText().toString().isEmpty() || username.getText().toString().isEmpty()) {

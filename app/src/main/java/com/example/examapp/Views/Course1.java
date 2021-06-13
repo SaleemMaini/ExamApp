@@ -1,21 +1,30 @@
 package com.example.examapp.Views;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 
+import com.example.examapp.Controller.QuestionController;
 import com.example.examapp.Controller.RecyclerViewAdapter;
 import com.example.examapp.Model.Data_Question;
 import com.example.examapp.R;
+import com.example.examapp.helper.DatabaseHelper;
+import com.example.examapp.helper.DatabaseHelper1;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -27,10 +36,12 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class Course1 extends Fragment {
+
     View v;
     RecyclerView course1_RecyclerView;
     List<Data_Question> course1QuestionList;
-    RecyclerViewAdapter recyclerViewAdapter;
+    public static RecyclerViewAdapter recyclerViewAdapter;
+    DatabaseHelper1 databaseHelper1;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,25 +73,47 @@ public class Course1 extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-               if (getArguments() != null) {
+        if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        course1QuestionList = new ArrayList<Data_Question>();
-//        Add Data Here
-        course1QuestionList.add(new Data_Question("ffff",50));
-        course1QuestionList.add(new Data_Question("ffffss",10));
-        course1QuestionList.add(new Data_Question("fffsadsasdasdasdasdasdsdadsadasdsasdasdasdsadadsssdadadaafss",10));
+//        course1_RecyclerView = course1_RecyclerView.findViewById(R.id.rvCourse1);
 
+
+
+        //Adapter
+        databaseHelper1 = new DatabaseHelper1(getActivity());
+        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),databaseHelper1.getAllData(),databaseHelper1);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+//        course1_RecyclerView.setLayoutManager(layoutManager);
+//        course1_RecyclerView.setItemAnimator(new DefaultItemAnimator());
+//        course1_RecyclerView.setAdapter(recyclerViewAdapter);
+
+        List<Data_Question> mydata = databaseHelper1.getAllData();
+        for(Data_Question data : mydata){
+            String myInfo = " Text: "+data.getText()+" Mark : "+data.getMark();
+            Log.d("data", myInfo);
+        }
+
+//        course1QuestionList = databaseHelper1.getAllData();
+//        course1QuestionList= new ArrayList<Data_Question>(databaseHelper1.getAllData());
+
+
+//        Add Data Here
+
+//        course1QuestionList.add(new QuestionController((AppCompatActivity) getActivity()).getQuestionId_course(1));
 
 
     }
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,18 +128,20 @@ public class Course1 extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         //Recycler
         course1_RecyclerView = (RecyclerView) v.findViewById(R.id.rvCourse1);
         LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
         course1_RecyclerView.setLayoutManager(llm);
         course1_RecyclerView.setHasFixedSize(true);
 
-        //Adapter
-        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),course1QuestionList);
+        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),databaseHelper1.getAllData(),databaseHelper1);
         course1_RecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();
-
-
     }
+    public static void notifyAdapter(){
+        recyclerViewAdapter.notifyDataSetChanged();
+     }
+
+
+
 }

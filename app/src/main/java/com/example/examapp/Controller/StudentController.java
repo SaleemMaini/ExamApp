@@ -2,9 +2,11 @@ package com.example.examapp.Controller;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.examapp.Model.Data_Question;
 import com.example.examapp.Model.Data_Student;
 import com.example.examapp.helper.DatabaseHelper;
 
@@ -46,6 +48,10 @@ public class StudentController extends BaseController {
     @Override
     public long insert(ContentValues values) {
         return new DatabaseHelper(getActivity()).insertData("student", values);
+    }
+    public long updateData(String TableName, ContentValues values, String where, String[] whereAr){
+        return new DatabaseHelper(getActivity()).updateData("student", values, where, whereAr);
+
     }
 
     public List<Data_Student> getAllStudent() {

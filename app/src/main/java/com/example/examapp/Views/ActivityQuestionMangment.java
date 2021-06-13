@@ -27,6 +27,7 @@ public class ActivityQuestionMangment extends AppCompatActivity {
         TabItem Course4 = findViewById(R.id.Course4);
         PagerAdapter pagerAdapter;
         ViewPager2 viewPager = findViewById(R.id.viewPager);
+        Intent intent = new Intent(getApplicationContext(), ActivityQuestionAddOrModify.class);
         pagerAdapter = new com.example.examapp.Controller.PagerAdapter(getSupportFragmentManager(),
                 getLifecycle());
 
@@ -58,7 +59,7 @@ public class ActivityQuestionMangment extends AppCompatActivity {
         addQuestionFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ActivityQuestionAddOrModify.class));
+                startActivity(intent);
             }
         });
     }

@@ -1,11 +1,15 @@
 package com.example.examapp.helper;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.ContactsContract;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.examapp.Model.Data_Question;
 
 public class DatabaseHelper {
 
@@ -28,6 +32,9 @@ public class DatabaseHelper {
 
     public long insertData(String TableName, ContentValues values) {
         return database.insert(TableName, null, values);
+    }
+    public long updateData(String TableName, ContentValues values, String where, String[] whereAr) {
+        return database.update(TableName, values, where, whereAr);
     }
 
     public void setActivity(AppCompatActivity activity) {

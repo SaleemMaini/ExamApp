@@ -14,6 +14,9 @@ public class Data_Exam {
         this.mark = mark;
     }
 
+    public Data_Exam(int mark) {
+        this.mark = mark;
+    }
 
     public int getId_course() {
         return id_course;

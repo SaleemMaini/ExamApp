@@ -41,4 +41,8 @@ public class AdminController extends BaseController {
     public long insert(ContentValues values) {
         return new DatabaseHelper(getActivity()).insertData("admin", values);
     }
+    public long updateData(String TableName, ContentValues values, String where, String[] whereAr){
+        return new DatabaseHelper(getActivity()).updateData("admin", values, where, whereAr);
+
+    }
 }

@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.examapp.Controller.QuestionController;
 import com.example.examapp.R;
+import com.example.examapp.helper.DatabaseHelper1;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,15 +19,22 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.examapp.Controller.QuestionController;
 import com.example.examapp.Model.Data_Question;
 
 public class ActivityQuestionAddOrModify extends AppCompatActivity {
 
-    Button btnEditDialog,btnEditDialog1,btnEditDialog2,btnEditDialog3,btnsv;
+    Button btnEditDialog,btnEditDialog1,btnEditDialog2,btnEditDialog3,btnadd,btnsv;
     EditText Qtxt,textMark;
+    TextView textView6;
+    Spinner spinnerCourses;
+    DatabaseHelper1  DatabaseHelper1;
+    Data_Question QuestionInfo;
+    int position;
+    String str_position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +45,18 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
         btnEditDialog1 = findViewById(R.id.E2);
         btnEditDialog2 = findViewById(R.id.E3);
         btnEditDialog3 = findViewById(R.id.E4);
+        btnadd = findViewById(R.id.buttonadd);
         btnsv = findViewById(R.id.buttonsv);
+
+        textView6 = findViewById(R.id.textView6);
+        String MarkMove = getIntent().getStringExtra("Edit");
+        textView6.setText(MarkMove + "Question");
+
+
+        Bundle bundle = getIntent().getExtras();
+
+
+        DatabaseHelper1 = new DatabaseHelper1(this);
 
         btnEditDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,13 +217,13 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
             }
         });
 
-        btnsv.setOnClickListener(new View.OnClickListener() {
+        btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Qtxt = findViewById(R.id.Questiontxt);
                 textMark = findViewById(R.id.textMark);
                 String Qustion = Qtxt.getText().toString();
-                int RB;
+                int RB = 0;
                 String txtMark = textMark.getText().toString();
                 RadioButton RR1,RR2,RR3,RR4;
                 RR1 = findViewById(R.id.radioButton1);
@@ -219,9 +239,9 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                 Data_Question DQ = new Data_Question();
 
                 ContentValues values = new ContentValues();
-                values.put("text", DQ.getText());
-                values.put("id_answer", DQ.getId_answer());
-                values.put("mark", DQ.getMark());
+                values.put("text", Qustion);
+                values.put("id_answer", RB);
+                values.put("mark", txtMark);
                 long inserted = new QuestionController(ActivityQuestionAddOrModify.this).insert(values);
                 if (inserted > 0) {
                     Qtxt.setText("");
@@ -231,37 +251,60 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity {
                     RR3.setText("........................");
                     RR4.setText("........................");
                     Snackbar.make(findViewById(R.id.ConstraintLayout1), "Added successfully", Snackbar.LENGTH_LONG).show();
+                    Intent intent = new Intent(ActivityQuestionAddOrModify.this,ActivityQuestionMangment.class);
+                    startActivity(intent);
+                    finish();
                 }
-
-
             }
         });
 
+        btnsv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Qtxt = findViewById(R.id.Questiontxt);
+//                textMark = findViewById(R.id.textMark);
+//                String Qustion = Qtxt.getText().toString();
+//                int RB = 0;
+//                String txtMark = textMark.getText().toString();
+//                RadioButton RR1,RR2,RR3,RR4;
+//                RR1 = findViewById(R.id.radioButton1);
+//                RR2 = findViewById(R.id.radioButton3);
+//                RR3 = findViewById(R.id.radioButton2);
+//                RR4 = findViewById(R.id.radioButton4);
+//                if(RR1.isChecked()){ RB = 1; }
+//                if(RR2.isChecked()){ RB = 2; }
+//                if(RR3.isChecked()){ RB = 3; }
+//                if(RR4.isChecked()){ RB = 4; }
+////                if(RR3.isChecked()){ RB = RR4.getText().toString(); }
+//
+//                Data_Question DQ = new Data_Question();
+//
+//                ContentValues values = new ContentValues();
+//                values.put("text", Qustion);
+////                values.put("id_answer", RB);
+//                values.put("mark", txtMark);
+//                String whereArgs[] = {String.valueOf(DQ.getMark())};
+//                long updeted = new QuestionController(ActivityQuestionAddOrModify.this).updateData("question",values,Qustion,whereArgs);
+//                if (updeted > 0) {
+//                    Qtxt.setText("");
+//                    textMark.setText("");
+//                    RR1.setText("........................");
+//                    RR2.setText("........................");
+//                    RR3.setText("........................");
+//                    RR4.setText("........................");
+//                    Snackbar.make(findViewById(R.id.ConstraintLayout1), "Added successfully", Snackbar.LENGTH_LONG).show();
+//                    Intent intent = new Intent(ActivityQuestionAddOrModify.this,ActivityQuestionMangment.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+            }
+        });
+
+        // Spinner Courses
+        spinnerCourses = (Spinner) findViewById(R.id.spinnerCourses);
+
+
     }
 
-    //    public void onCustomAlertDialog(View v) {
-//        LayoutInflater inflater = getLayoutInflater();
-//        View adView = inflater.inflate(R.layout.aleredittxml, null, false);
-//        final EditText edt = adView.findViewById(R.id.txt_edit);
-//
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("Edit Option");
-//        builder.setCancelable(false);
-//
-//        builder.setPositiveButton("Edit", DialogInterface.OnClickListener(onCustomAlertDialog())
-//
-//
-//
-//        builder.setNegativeButton("Cansle", onClick(dialog, which) {
-//            String cerd = "Password: " + txt_edit.getText().toString();
-//
-//            Toast.makeText( QuestionAddOrModify.this, cerd, Toast.LENGTH_LONG).show();
-//            dialog.dismiss();
-//
-//        });
-//
-//
-//
-//    }
 
 }
