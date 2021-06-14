@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.examapp.Controller.QuestionController;
+import com.example.examapp.Controller.RecyclerViewAdapter;
 import com.example.examapp.R;
 import com.example.examapp.helper.DatabaseHelper1;
 import com.google.android.material.snackbar.Snackbar;
@@ -42,6 +43,8 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity  {
 
     DatabaseHelper1  DatabaseHelper1;
     Data_Question QuestionInfo;
+    EditText questionText,questionMark;
+
     int position;
     String str_position;
 
@@ -64,6 +67,7 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity  {
 
 
         Bundle bundle = getIntent().getExtras();
+
 
 
         DatabaseHelper1 = new DatabaseHelper1(this);
@@ -230,16 +234,19 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity  {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Qtxt = findViewById(R.id.Questiontxt);
                 textMark = findViewById(R.id.textMark);
                 String Qustion = Qtxt.getText().toString();
                 int RB = 0;
                 String txtMark = textMark.getText().toString();
                 RadioButton RR1, RR2, RR3, RR4;
+
                 RR1 = findViewById(R.id.radioButton1);
                 RR2 = findViewById(R.id.radioButton3);
                 RR3 = findViewById(R.id.radioButton2);
                 RR4 = findViewById(R.id.radioButton4);
+
                 int idCourse = spinnerCourses.getSelectedItemPosition();
 
                 if (RR1.isChecked()) {
@@ -263,7 +270,9 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity  {
                 values.put("id_answer", RB);
                 values.put("mark", txtMark);
                 values.put("id_course", idCourse);
+
                 long inserted = new QuestionController(ActivityQuestionAddOrModify.this).insert(values);
+
                 if (inserted > 0) {
                     Qtxt.setText("");
                     textMark.setText("");
@@ -286,7 +295,9 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity  {
 //                textMark = findViewById(R.id.textMark);
 //                String Qustion = Qtxt.getText().toString();
 //                int RB = 0;
-//                String txtMark = textMark.getText().toString();
+//                int mark =  Integer.parseInt(String.valueOf(textMark.getText()));
+//                int id_course = spinnerCourses.getSelectedItemPosition();
+//
 //                RadioButton RR1,RR2,RR3,RR4;
 //                RR1 = findViewById(R.id.radioButton1);
 //                RR2 = findViewById(R.id.radioButton3);
@@ -303,8 +314,9 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity  {
 //                ContentValues values = new ContentValues();
 //                values.put("text", Qustion);
 ////                values.put("id_answer", RB);
-//                values.put("mark", txtMark);
-//                String whereArgs[] = {String.valueOf(DQ.getMark())};
+//                values.put("mark", mark);
+//                values.put("id_course", mark);
+//                String whereArgs[] = {"" + DQ.getId()};
 //                long updeted = new QuestionController(ActivityQuestionAddOrModify.this).updateData("question",values,Qustion,whereArgs);
 //                if (updeted > 0) {
 //                    Qtxt.setText("");
@@ -316,10 +328,52 @@ public class ActivityQuestionAddOrModify extends AppCompatActivity  {
 //                    Snackbar.make(findViewById(R.id.ConstraintLayout1), "Added successfully", Snackbar.LENGTH_LONG).show();
 //                    Intent intent = new Intent(ActivityQuestionAddOrModify.this,ActivityQuestionMangment.class);
 //                    startActivity(intent);
-//                    finish();
-//                }
+//                    finish();}
+
+                questionText = findViewById(R.id.Questiontxt);
+                String qt = questionText.getText().toString();
+                questionMark = findViewById(R.id.textMark);
+                int RBEdit = 0;
+                RadioButton RA1, RA2, RA3, RA4;
+
+                RA1 = findViewById(R.id.radioButton1);
+                RA2 = findViewById(R.id.radioButton3);
+                RA3 = findViewById(R.id.radioButton2);
+                RA4 = findViewById(R.id.radioButton4);
+                if (RA1.isChecked()) {
+                    RBEdit = 1;
+                }
+                if (RA2.isChecked()) {
+                    RBEdit = 2;
+                }
+                if (RA3.isChecked()) {
+                    RBEdit = 3;
+                }
+                if (RA4.isChecked()) {
+                    RBEdit = 4;
+                }
+
+                int id_course =spinnerCourses.getSelectedItemPosition();
+
+                QuestionInfo.setText(qt);
+                QuestionInfo.setId_answer(RBEdit);
+                QuestionInfo.setMark(Integer.parseInt(questionMark.getText().toString()));
+                QuestionInfo.setId_course(id_course);
+
+                DatabaseHelper1.updateDataToQuestion(QuestionInfo);
+                Course1.notifyAdapter();
+                Course2.notifyAdapter();
+                Course3.notifyAdapter();
+                Course4.notifyAdapter();
+
+                Intent intent = new Intent(ActivityQuestionAddOrModify.this,ActivityQuestionMangment.class);
+                startActivity(intent);
+                finish();
             }
         });
+
+
+
 
         // Spinner Courses
         spinnerCourses = (Spinner) findViewById(R.id.spinnerCourses);

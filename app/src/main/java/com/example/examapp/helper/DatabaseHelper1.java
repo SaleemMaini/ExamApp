@@ -200,7 +200,7 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         cv.put("mark", data.getMark());
         String whereClause = "id=?";
         String whereArgs[] = {String.valueOf(data.getId())};
-        db.update("Items", contentValues, whereClause, whereArgs);
+        db.update("question", contentValues, whereClause, whereArgs);
     }
     // update data for answer table
     public  int updateDataToAnswer(Data_Answer data){

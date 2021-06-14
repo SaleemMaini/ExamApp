@@ -73,6 +73,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 //Toast.makeText(context,String.valueOf(questionList.g),Toast.LENGTH_LONG).show();
 //                btnEdit.findViewById(R.id.questionEditBtn);
+
                 Intent intent = new Intent(context, ActivityQuestionAddOrModify.class);
                 intent.putExtra("position",String.valueOf(position));
                 context.startActivity(intent);

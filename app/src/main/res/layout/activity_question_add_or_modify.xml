@@ -43,7 +43,7 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="Mark"
-                android:inputType="textPersonName" />
+                android:inputType="number" />
 
             <Spinner
                 android:id="@+id/spinnerCourses"
