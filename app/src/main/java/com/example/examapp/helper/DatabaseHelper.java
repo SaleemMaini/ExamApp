@@ -37,6 +37,7 @@ public class DatabaseHelper {
         return database.update(TableName, values, where, whereAr);
     }
 
+
     public void setActivity(AppCompatActivity activity) {
         this.activity = activity;
     }

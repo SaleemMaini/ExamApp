@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/HiddenTitleTheme">
+        <activity android:name=".Views.EditQuestionActivity"></activity>
+        <activity android:name=".Views.AddQuestionActivity" />
         <activity android:name=".Views.ActivityQuestionMangment" />
         <activity android:name=".Views.ActivityQuestionAddOrModify" />
         <activity android:name=".Views.ActivityCourses" />

@@ -24,6 +24,7 @@ public abstract class BaseController {
 
     public abstract long updateData(String TableName, ContentValues values, String where, String[] whereAr);
 
+
     public AppCompatActivity getActivity() {
         return this.activity;
     }

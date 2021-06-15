@@ -38,7 +38,6 @@ import java.util.List;
 public class Course1 extends Fragment {
     View v;
     RecyclerView course1_RecyclerView;
-    List<Data_Question> course1QuestionList;
     public static RecyclerViewAdapter recyclerViewAdapter;
     DatabaseHelper1 databaseHelper1;
 
@@ -80,34 +79,9 @@ public class Course1 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-//        course1_RecyclerView = course1_RecyclerView.findViewById(R.id.rvCourse1);
-
-
-
         //Adapter
         databaseHelper1 = new DatabaseHelper1(getActivity());
         recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),databaseHelper1.getCourse1Questions(),databaseHelper1);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-//        course1_RecyclerView.setLayoutManager(layoutManager);
-//        course1_RecyclerView.setItemAnimator(new DefaultItemAnimator());
-//        course1_RecyclerView.setAdapter(recyclerViewAdapter);
-
-//        List<Data_Question> mydata = databaseHelper1.getAllData();
-//        for(Data_Question data : mydata){
-//            String myInfo = " Text: "+data.getText()+" Mark : "+data.getMark();
-//            Log.d("data", myInfo);
-//        }
-
-//        course1QuestionList = databaseHelper1.getAllData();
-//        course1QuestionList= new ArrayList<Data_Question>(databaseHelper1.getAllData());
-
-
-//        Add Data Here
-
-//        course1QuestionList.add(new QuestionController((AppCompatActivity) getActivity()).getQuestionId_course(1));
-
-
     }
 
 
@@ -130,11 +104,12 @@ public class Course1 extends Fragment {
         course1_RecyclerView = (RecyclerView) v.findViewById(R.id.rvCourse1);
         LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
         course1_RecyclerView.setLayoutManager(llm);
+        course1_RecyclerView.setItemAnimator(new DefaultItemAnimator());
         course1_RecyclerView.setHasFixedSize(true);
 
         //Adapter
         course1_RecyclerView.setAdapter(recyclerViewAdapter);
-        recyclerViewAdapter.notifyDataSetChanged();
+//        recyclerViewAdapter.notifyDataSetChanged();
     }
     public static void notifyAdapter(){
         recyclerViewAdapter.notifyDataSetChanged();

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Views.ActivityQuestionAddOrModify">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Edit or modify question" />
+
+            <EditText
+                android:id="@+id/QuestiontxtEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="QuestionText"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/textMarkEdit"
+                android:layout_width="168dp"
+                android:layout_height="58dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Mark"
+                android:inputType="number" />
+
+            <Spinner
+                android:id="@+id/spinnerCoursesEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/radioGroupEdit"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp">
+
+                    <RadioButton
+                        android:id="@+id/radioButton1Edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:editable="true"
+                        android:text="RadioButton" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton2Edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:editable="true"
+                        android:text="RadioButton" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton3Edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:editable="true"
+                        android:text="RadioButton" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton4Edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="0dp"
+                        android:editable="true"
+                        android:text="RadioButton" />
+
+                </RadioGroup>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/E1Edit"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00FFFFFF"
+                        android:shadowColor="#00FFFFFF"
+                        app:backgroundTint="#00FFFFFF"
+                        app:icon="@drawable/edit"
+                        app:iconSize="25dp"
+                        app:iconTint="?attr/colorPrimaryVariant" />
+
+                    <Button
+                        android:id="@+id/E2Edit"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00FFFFFF"
+                        app:backgroundTint="#00FFFFFF"
+                        app:icon="@drawable/edit"
+                        app:iconSize="25dp"
+                        app:iconTint="?attr/colorPrimaryVariant" />
+
+                    <Button
+                        android:id="@+id/E3Edit"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00FFFFFF"
+                        app:backgroundTint="#00FFFFFF"
+                        app:icon="@drawable/edit"
+                        app:iconSize="25dp"
+                        app:iconTint="?attr/colorPrimaryVariant" />
+
+                    <Button
+                        android:id="@+id/E4Edit"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#00FFFFFF"
+                        app:backgroundTint="#00FFFFFF"
+                        app:icon="@drawable/edit"
+                        app:iconSize="25dp"
+                        app:iconTint="?attr/colorPrimaryVariant" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonsv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="48dp"
+                android:text="Save" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -22,7 +23,6 @@ import java.util.List;
 public class DatabaseHelper1 extends SQLiteOpenHelper {
     public static final String DB_NAME = "ExamApp.db";
     public static final int DB_VERSION = 1;
-    public static final String TABLE1_NAME = "account";
     public static final String TABLE2_NAME = "admin";
     public static final String TABLE3_NAME = "student";
     public static final String TABLE4_NAME = "question";
@@ -38,56 +38,46 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-//        db.execSQL("CREATE TABLE \"account\" (\n" +
-//                "\t\"userName\"\tTEXT UNIQUE,\n" +
-//                "\t\"password\"\tTEXT,\n" +
-//                "\t\"type\"\tINTEGER,\n" +
-//                "\tPRIMARY KEY(\"userName\")\n" +
-//                ")" );
-        db.execSQL("CREATE TABLE IF NOT EXISTS \"admin\" (\n" +
-                "\t\"id\"\tINTEGER,\n" +
-                "\t\"name\"\t TEXT,\n" +
-                "\t\"fname\"\t TEXT,\n" +
-                "\t\"lname\"\t TEXT,\n" +
-                "\t\"username\" \tTEXT,\n" +
-                "\t\"password\"\t TEXT,\n" +
-                "\tPRIMARY KEY(\"id\")\n" +
-                ");" );
-        db.execSQL("CREATE TABLE IF NOT EXISTS \"answer\" (\n" +
-                "\t\"id\"\tINTEGER,\n" +
-                "\t\"text\"\tTEXT,\n" +
-                "\t\"status\"\tINTEGER COLLATE BINARY,\n" +
-                "\t\"id_question\"\tINTEGER,\n" +
-                "\tFOREIGN KEY(\"id_question\") REFERENCES \"question\"(\"id\")\n" +
-                ");" );
-        db.execSQL("CREATE TABLE IF NOT EXISTS question(\"id\"\tINTEGER,\n" +
-                "\t\"text\"\tTEXT,\n" +
-                "\t\"id_answer\"\tINTEGER,\n" +
-                "\t\"mark\"\tINTEGER,\n" +
-                "\t\"id_course\"\tINTEGER,\n" +
-                "\tPRIMARY KEY(\"id\"));");
-        db.execSQL("CREATE TABLE IF NOT EXISTS \"answer\" (\n" +
-                "\t\"id\"\tINTEGER,\n" +
-                "\t\"text\"\tTEXT,\n" +
-                "\t\"status\"\tINTEGER COLLATE BINARY,\n" +
-                "\t\"id_question\"\tINTEGER,\n" +
-                "\tFOREIGN KEY(\"id_question\") REFERENCES \"question\"(\"id\")\n" +
-                ");" );
-        db.execSQL("CREATE TABLE IF NOT EXISTS \"course\" (\n" +
-                "\t\"id\"\tINTEGER,\n" +
-                "\t\"type\"\tTEXT,\n" +
-                "\t\"id_question\"\tINTEGER,\n" +
-                "\t\"id_exam\"\tINTEGER,\n" +
-                "\tPRIMARY KEY(\"id\"),\n" +
-                "\tFOREIGN KEY(\"id_question\") REFERENCES \"question\"(\"id\")\n" +
-                ");" );
-        db.execSQL("CREATE TABLE IF NOT EXISTS \"exam\" (\n" +
-                "\t\"id_course\"\tINTEGER,\n" +
-                "\t\"id_student\"\tINTEGER,\n" +
-                "\t\"mark\"\tINTEGER,\n" +
-                "\tPRIMARY KEY(\"id_course\"),\n" +
-                "\tFOREIGN KEY(\"id_student\") REFERENCES \"student\"(\"id\")\n" +
-                ");" );
+        db.execSQL("CREATE TABLE  IF NOT EXISTS " + TABLE2_NAME  +" ("
+                + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "name" + " TEXT,"
+                + "username" + " TEXT,"
+                + "password" + " TEXT"
+                +  " )" );
+        db.execSQL("CREATE TABLE  IF NOT EXISTS " + TABLE3_NAME  +" ("
+                + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "name" + " TEXT,"
+                + "username" + " TEXT,"
+                + "password" + " TEXT,"
+                + "id_exam" + " INTEGER,"
+                + " FOREIGN KEY(\"id_exam\") REFERENCES \"exam\"(\"id\")"
+                +  " )" );
+        db.execSQL("CREATE TABLE  IF NOT EXISTS " + TABLE5_NAME  +" ("
+                + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "text" + " TEXT,"
+                + "status" + " TEXT,"
+                + "id_question" + " TEXT,"
+                + " FOREIGN KEY(\"id_question\") REFERENCES \"question\"(\"id\")" + " )" );
+        db.execSQL("CREATE TABLE  IF NOT EXISTS " + TABLE4_NAME  +" ("
+                + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "text" + " TEXT,"
+                + "id_answer" + " INTEGER,"
+                + "mark" + " TEXT,"
+                + "id_course" + " INTEGER" + " )" );
+        db.execSQL("CREATE TABLE  IF NOT EXISTS " + TABLE6_NAME  +" ("
+                + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "type" + " TEXT,"
+                + "id_question" + " INTEGER,"
+                + "id_exam" + " TEXT,"
+                + "FOREIGN KEY(id_question) REFERENCES question(id)" + " )" );
+        db.execSQL("CREATE TABLE  IF NOT EXISTS " + TABLE7_NAME  +" ("
+                + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "id_course" + " INTEGER,"
+                + "mark" + " INTEGER,"
+                + "FOREIGN KEY(id_course) REFERENCES course(id)"
+                +  " )" );
+
+
     }
 
     @Override
@@ -121,8 +111,6 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("name" , data.getName());
-        cv.put("fname" , data.getFname());
-        cv.put("lname", data.getLname());
         cv.put("username", data.getUsername());
         cv.put("password", data.getUsername());
         long id = db.insert(TABLE2_NAME , null , cv);
@@ -134,8 +122,6 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("name" , data.getName());
-        cv.put("fname" , data.getFname());
-        cv.put("lname", data.getLname());
         cv.put("username", data.getUsername());
         cv.put("password", data.getUsername());
         cv.put("id_exam", data.getId_exam());
@@ -150,7 +136,7 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         cv.put("text" , data.getText());
         cv.put("id_answer" , data.getId_answer());
         cv.put("mark", data.getMark());
-//        cv.put("id_course", data.getId_course());
+        cv.put("id_course", data.getId_course());
         long id = db.insert(TABLE4_NAME , null , cv);
         db.close();
         return  id;
@@ -178,21 +164,20 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         return  id;
     }
     // insert data to exam table
-    public  long insertDataToExam(Data_Exam data){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put("mark" , data.getMark());
-        long id = db.insert(TABLE7_NAME , null , cv);
-        db.close();
-        return  id;
-    }
+//    public  long insertDataToExam(Data_Exam data){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues cv = new ContentValues();
+//        cv.put("mark" , data.getMark());
+//        long id = db.insert(TABLE7_NAME , null , cv);
+//        db.close();
+//        return  id;
+//    }
 
 // Update Part //
 
     // update data for question table
     public void updateDataToQuestion(Data_Question data) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
         ContentValues cv = new ContentValues();
         cv.put("id" , data.getId());
         cv.put("text" , data.getText());
@@ -200,7 +185,7 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         cv.put("mark", data.getMark());
         String whereClause = "id=?";
         String whereArgs[] = {String.valueOf(data.getId())};
-        db.update("question", contentValues, whereClause, whereArgs);
+        db.update(TABLE4_NAME, cv, whereClause, whereArgs);
     }
     // update data for answer table
     public  int updateDataToAnswer(Data_Answer data){
@@ -208,7 +193,7 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put("text" , data.getText());
         cv.put("status" , data.getStatus());
-//        cv.put("id_question", data.getId_question());
+        cv.put("id_question", data.getId_question());
         return db.update(TABLE5_NAME, cv , "id" + " =?",
                 new String[]{String.valueOf(data.getId())});
     }
@@ -217,10 +202,9 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("name" , data.getName());
-        cv.put("fname" , data.getFname());
-        cv.put("lname", data.getLname());
         cv.put("username", data.getUsername());
-//        cv.put("id_exam", data.getId_exam());
+        cv.put("username", data.getUsername());
+        cv.put("id_exam", data.getId_exam());
         return db.update(TABLE3_NAME, cv , "name" + " =?",
                 new String[]{String.valueOf(data.getId())});
     }
@@ -229,17 +213,17 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
     // delete data from question table
     public  void deleteDataFromQuestion(Data_Question data){
         SQLiteDatabase db = this.getWritableDatabase();
-            db.delete(TABLE4_NAME ,  data.getId() + " =?",
-                new String[]{String.valueOf(data.getId())});
-            db.close();
-    }
-    // delete data from answer table
-    public  void deleteDataFromAnswer(Data_Answer data){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE5_NAME ,  data.getText() + " =?",
+        db.delete(TABLE4_NAME ,  "id" + " =?",
                 new String[]{String.valueOf(data.getId())});
         db.close();
     }
+    // delete data from answer table
+//    public  void deleteDataFromAnswer(Data_Answer data){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        db.delete(TABLE5_NAME ,  data.getText() + " =?",
+//                new String[]{String.valueOf(data.getId())});
+//        db.close();
+//    }
 
 // Get Part //
 
@@ -384,31 +368,42 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
     public  Data_Question getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE4_NAME,
-                new String[]{
-                        "text","id_answer"
-                        ,"mark",
-                        },
+                new String[]{"id",
+                        "text",
+                        "id_answer",
+                        "mark",
+                        "id_course"},
                 "id" + "=?", new String[]{String.valueOf(id)},
                 null,null,null,null);
 
-        if(cursor != null)
+        if(cursor != null  && cursor.getCount()>0)
             cursor.moveToFirst();
-             Data_Question data = new Data_Question(
-                cursor.getString(cursor.getColumnIndex("text")),
-                cursor.getInt(cursor.getColumnIndex("id_answer")),
-                cursor.getInt(cursor.getColumnIndex("mark")));
-
-
-//        Data_Question data = new Data_Question(
-////                Integer.parseInt(cursor.getString(0)),
-//                cursor.getString(1) ,
-////                cursor.getInt(2) ,
-//                cursor.getInt(3)
-////                , cursor.getInt(4)
-//        );
-
-        return data;
+            Data_Question data = new Data_Question(
+                         cursor.getInt(0),
+                        cursor.getString(1) ,
+                        cursor.getInt(2) ,
+                        cursor.getInt(3) ,
+                        cursor.getInt(4));
+            cursor.close();
+            return data;
     }
+}
+
+
+
+//        else {
+//            return new Data_Question("Hi",1,1,1); // try again
+//        }
+//    }
+
+//            Data_Question data = new Data_Question(
+//                    cursor.getInt(cursor.getColumnIndex("id")),
+//                    cursor.getString(cursor.getColumnIndex("text")),
+//                    cursor.getInt(cursor.getColumnIndex("id_answer")),
+//                    cursor.getInt(cursor.getColumnIndex("mark")),
+//                    cursor.getInt(cursor.getColumnIndex("id_course")));
+
+
 
 
 //    public  int getDataCount(){
@@ -419,6 +414,4 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
 //        cursor.close();
 //        return count;
 //    }
-
-
-}
+//}

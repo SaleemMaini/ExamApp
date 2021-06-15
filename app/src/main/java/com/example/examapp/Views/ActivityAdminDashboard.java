@@ -24,7 +24,7 @@ public class ActivityAdminDashboard extends AppCompatActivity {
         findViewById(R.id.btn_VSM).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ActivityQuestionAddOrModify.class));
+                startActivity(new Intent(getApplicationContext(), AddQuestionActivity.class));
             }
         });
     }

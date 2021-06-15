@@ -1,17 +1,23 @@
 package com.example.examapp.Views;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
-
-import com.example.examapp.Controller.PagerAdapter;
-import com.example.examapp.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.examapp.Controller.PagerAdapter;
+import com.example.examapp.Controller.RecyclerViewAdapter;
+import com.example.examapp.R;
+import com.example.examapp.helper.DatabaseHelper;
+import com.example.examapp.helper.DatabaseHelper1;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 
 public class ActivityQuestionMangment extends AppCompatActivity {
     FloatingActionButton addQuestionFab;
@@ -20,6 +26,7 @@ public class ActivityQuestionMangment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_mangment);
 
+
         TabLayout tabLayout = findViewById(R.id.tabBar);
         TabItem Course1 = findViewById(R.id.Course1);
         TabItem Course2 = findViewById(R.id.Course2);
@@ -27,7 +34,6 @@ public class ActivityQuestionMangment extends AppCompatActivity {
         TabItem Course4 = findViewById(R.id.Course4);
         PagerAdapter pagerAdapter;
         ViewPager2 viewPager = findViewById(R.id.viewPager);
-        Intent intent = new Intent(getApplicationContext(), ActivityQuestionAddOrModify.class);
         pagerAdapter = new com.example.examapp.Controller.PagerAdapter(getSupportFragmentManager(),
                 getLifecycle());
 
@@ -59,10 +65,12 @@ public class ActivityQuestionMangment extends AppCompatActivity {
         addQuestionFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(ActivityQuestionMangment.this, AddQuestionActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
-    }
 
+    }
 
 }

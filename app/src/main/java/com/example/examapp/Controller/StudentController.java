@@ -63,8 +63,6 @@ public class StudentController extends BaseController {
         if (cursor.moveToFirst()) do {
             Data_Student stu = new Data_Student();
             stu.setName(cursor.getString(cursor.getColumnIndex("name")));
-            stu.setFname(cursor.getString(cursor.getColumnIndex("fname")));
-            stu.setLname(cursor.getString(cursor.getColumnIndex("lname")));
             stu.setUsername(cursor.getString(cursor.getColumnIndex("username")));
             stu.setPassword(cursor.getString(cursor.getColumnIndex("password")));
             list.add(stu);
@@ -80,8 +78,6 @@ public class StudentController extends BaseController {
         Data_Student = new Data_Student();
         if (cursor.moveToFirst()) do {
             Data_Student.setName(cursor.getString(cursor.getColumnIndex("name")));
-            Data_Student.setFname(cursor.getString(cursor.getColumnIndex("fname")));
-            Data_Student.setLname(cursor.getString(cursor.getColumnIndex("lname")));
             Data_Student.setUsername(cursor.getString(cursor.getColumnIndex("username")));
             Data_Student.setPassword(cursor.getString(cursor.getColumnIndex("password")));
         } while (cursor.moveToNext());

@@ -18,12 +18,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.examapp.Model.Data_Question;
 import com.example.examapp.Model.Data_Student;
 import com.example.examapp.R;
-import com.example.examapp.Views.ActivityQuestionAddOrModify;
 import com.example.examapp.Views.ActivityQuestionMangment;
 import com.example.examapp.Views.Course1;
 import com.example.examapp.Views.Course2;
 import com.example.examapp.Views.Course3;
 import com.example.examapp.Views.Course4;
+import com.example.examapp.Views.EditQuestionActivity;
 import com.example.examapp.helper.DatabaseHelper;
 import com.example.examapp.helper.DatabaseHelper1;
 
@@ -39,7 +39,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public RecyclerViewAdapter(Context context, List<Data_Question> allData) {
         this.context = context;
-//        this.questionList = new ArrayList<Data_Question>(questionList);
         this.questionList = allData;
     }
 
@@ -58,7 +57,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         final Data_Question data = questionList.get(position);
         holder.questionText.setText(data.getText());
         holder.questionMark.setText("Mark : " + data.getMark());
@@ -74,8 +73,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 //Toast.makeText(context,String.valueOf(questionList.g),Toast.LENGTH_LONG).show();
 //                btnEdit.findViewById(R.id.questionEditBtn);
 
-                Intent intent = new Intent(context, ActivityQuestionAddOrModify.class);
-                intent.putExtra("position",String.valueOf(position));
+                Intent intent = new Intent(context, EditQuestionActivity.class);
+                intent.putExtra("position",String.valueOf(data.getId()));
                 context.startActivity(intent);
 
             }
@@ -89,7 +88,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView questionText,questionAnswerId,questionMark;
+        public TextView questionText,questionMark;
         public Button delete, edit;
         public MyViewHolder(@NonNull View v) {
             super(v);
@@ -101,13 +100,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
     public void deleteData(int position){
+        DBH = new DatabaseHelper1(context);
         DBH.deleteDataFromQuestion(questionList.get(position));
         questionList.remove(position);
+//        ActivityQuestionMangment.notifyAdapter();
+
+
         Course1.notifyAdapter();
-        Course2.notifyAdapter();
-        Course3.notifyAdapter();
-        Course4.notifyAdapter();
+//        Course2.notifyAdapter();
+//        Course3.notifyAdapter();
+//        Course4.notifyAdapter();
     }
-
-
 }

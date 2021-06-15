@@ -3,8 +3,6 @@ package com.example.examapp.Model;
 public class Data_Student {
     public int id;
     public String name;
-    public String fname;
-    public String lname;
     public String username;
     public String password;
     public String id_exam;
@@ -12,20 +10,16 @@ public class Data_Student {
     public Data_Student() {
     }
 
-    public Data_Student(int id, String name, String fname, String lname, String username, String password, String id_exam) {
+    public Data_Student(int id, String name, String username, String password, String id_exam) {
         this.id = id;
         this.name = name;
-        this.fname = fname;
-        this.lname = lname;
         this.username = username;
         this.password = password;
         this.id_exam = id_exam;
     }
 
-    public Data_Student(String name, String fname, String lname, String username, String password, String id_exam) {
+    public Data_Student(String name, String username, String password, String id_exam) {
         this.name = name;
-        this.fname = fname;
-        this.lname = lname;
         this.username = username;
         this.password = password;
         this.id_exam = id_exam;
@@ -50,22 +44,6 @@ public class Data_Student {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
     }
 
     public String getUsername() {

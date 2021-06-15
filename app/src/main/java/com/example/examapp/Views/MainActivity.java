@@ -44,12 +44,30 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
         }
 
-//        ContentValues values = new ContentValues();
-//        values.put("text","question for course 1");
-//        values.put("id_answer",2);
-//        values.put("mark",4);
-//        values.put("id_course",0);
-//        new QuestionController(this).insert(values);
+        ContentValues q1 = new ContentValues();
+        q1.put("text","question for course 1");
+        q1.put("id_answer",2);
+        q1.put("mark",4);
+        q1.put("id_course",0);
+        new QuestionController(this).insert(q1);
+        ContentValues q2 = new ContentValues();
+        q2.put("text","question for course 2");
+        q2.put("id_answer",2);
+        q2.put("mark",4);
+        q2.put("id_course",1);
+        new QuestionController(this).insert(q2);
+        ContentValues q3 = new ContentValues();
+        q3.put("text","question for course 3");
+        q3.put("id_answer",2);
+        q3.put("mark",4);
+        q3.put("id_course",2);
+        new QuestionController(this).insert(q3);
+        ContentValues q4 = new ContentValues();
+        q4.put("text","question for course 4");
+        q4.put("id_answer",2);
+        q4.put("mark",4);
+        q4.put("id_course",3);
+        new QuestionController(this).insert(q4);
 
 
         ContentValues values1 = new ContentValues();
