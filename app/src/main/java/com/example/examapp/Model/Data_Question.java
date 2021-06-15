@@ -42,9 +42,7 @@ public class Data_Question {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) { this.id = id; }
 
     public String getText() {
         return text;

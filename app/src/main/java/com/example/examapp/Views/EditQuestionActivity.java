@@ -18,16 +18,18 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+//import com.example.examapp.Controller.QuestionController;
 import com.example.examapp.Model.Data_Question;
 import com.example.examapp.R;
+
 import com.example.examapp.helper.DatabaseHelper1;
 
 public class EditQuestionActivity extends AppCompatActivity {
     private Button btnEditDialog,btnEditDialog1,btnEditDialog2,btnEditDialog3,btnsv;
     private EditText Qtxt,Mark;
     private RadioButton RR1, RR2, RR3, RR4;
-    private Spinner spinnerCourses;
     private DatabaseHelper1 databaseHelper1;
+//    private QuestionController questionController;
     Data_Question QuestionInfo;
     private EditText questionText,questionMark;
     int position;
@@ -37,7 +39,6 @@ public class EditQuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_question);
-        databaseHelper1 = new DatabaseHelper1(this);
 
         Qtxt = findViewById(R.id.QuestiontxtEdit);
         Mark = findViewById(R.id.textMarkEdit);
@@ -49,14 +50,13 @@ public class EditQuestionActivity extends AppCompatActivity {
         RR2 = findViewById(R.id.radioButton2Edit);
         RR3 = findViewById(R.id.radioButton3Edit);
         RR4 = findViewById(R.id.radioButton4Edit);
-        spinnerCourses = findViewById(R.id.spinnerCoursesEdit);
         btnsv = findViewById(R.id.buttonsv);
 
         Bundle bundle = getIntent().getExtras();
         str_position = bundle.getString("position" ) ;
         position = Integer.parseInt(str_position) ;
         databaseHelper1 = new DatabaseHelper1(this);
-        QuestionInfo = databaseHelper1.getData(position) ;
+        QuestionInfo = databaseHelper1.getQuestionId(position) ;
 
         if(QuestionInfo != null){
             Qtxt.setText(QuestionInfo.getText());
@@ -73,20 +73,7 @@ public class EditQuestionActivity extends AppCompatActivity {
             if(id_answer == 4){
                 RR4.setChecked(true);
             }
-            Mark.setText(Integer.toString(QuestionInfo.getMark()));
-            int id_course = QuestionInfo.getId_course();
-            if (id_course == 0) {
-                spinnerCourses.setSelection(0);
-            }
-            if (id_course == 1){
-                spinnerCourses.setSelection(1);
-            }
-            if(id_course == 2){
-                spinnerCourses.setSelection(2);
-            }
-            if(id_course == 3){
-                spinnerCourses.setSelection(3);
-            }
+            Mark.setText(String.valueOf(QuestionInfo.getMark()));
         }
 
 
@@ -136,8 +123,6 @@ public class EditQuestionActivity extends AppCompatActivity {
                 EditText editText1;
                 Button btn1;
 
-                RadioButton RR2;
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(EditQuestionActivity.this);
                 View view1 = LayoutInflater.from(EditQuestionActivity.this).inflate(R.layout.aleredittxml, viewGroup, false);
                 builder.setCancelable(false);
@@ -146,7 +131,7 @@ public class EditQuestionActivity extends AppCompatActivity {
                 editText1 = view1.findViewById(R.id.txt_edit);
                 btn1 = view1.findViewById(R.id.btn_edit);
 
-                RR2 = findViewById(R.id.radioButton2);
+
 
                 AlertDialog alertDialog = builder.create();
 
@@ -175,8 +160,6 @@ public class EditQuestionActivity extends AppCompatActivity {
                 EditText editText1;
                 Button btn1;
 
-                RadioButton RR3;
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(EditQuestionActivity.this);
                 View view1 = LayoutInflater.from(EditQuestionActivity.this).inflate(R.layout.aleredittxml, viewGroup, false);
                 builder.setCancelable(false);
@@ -185,7 +168,7 @@ public class EditQuestionActivity extends AppCompatActivity {
                 editText1 = view1.findViewById(R.id.txt_edit);
                 btn1 = view1.findViewById(R.id.btn_edit);
 
-                RR3 = findViewById(R.id.radioButton3);
+
 
                 AlertDialog alertDialog = builder.create();
 
@@ -214,8 +197,6 @@ public class EditQuestionActivity extends AppCompatActivity {
                 EditText editText1;
                 Button btn1;
 
-                RadioButton RR4;
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(EditQuestionActivity.this);
                 View view1 = LayoutInflater.from(EditQuestionActivity.this).inflate(R.layout.aleredittxml, viewGroup, false);
                 builder.setCancelable(false);
@@ -224,7 +205,7 @@ public class EditQuestionActivity extends AppCompatActivity {
                 editText1 = view1.findViewById(R.id.txt_edit);
                 btn1 = view1.findViewById(R.id.btn_edit);
 
-                RR4 = findViewById(R.id.radioButton4);
+
 
                 AlertDialog alertDialog = builder.create();
 
@@ -302,17 +283,16 @@ public class EditQuestionActivity extends AppCompatActivity {
                 if (RR4.isChecked()) {
                     RBEdit = 4;
                 }
-                int new_id_course = spinnerCourses.getSelectedItemPosition();
                 QuestionInfo.setText(Qtxt.getText().toString());
                 QuestionInfo.setId_answer(RBEdit);
-                QuestionInfo.setMark(Integer.parseInt(questionMark.getText().toString()));
-                QuestionInfo.setId_course(new_id_course);
+                QuestionInfo.setMark(Integer.parseInt(Mark.getText().toString()));
 
                 databaseHelper1.updateDataToQuestion(QuestionInfo);
+
                 Course1.notifyAdapter();
-//                Course2.notifyAdapter();
-//                Course3.notifyAdapter();
-//                Course4.notifyAdapter();
+                Course2.notifyAdapter();
+                Course3.notifyAdapter();
+                Course4.notifyAdapter();
 
                 Intent intent = new Intent(EditQuestionActivity.this,ActivityQuestionMangment.class);
                 startActivity(intent);
@@ -323,23 +303,6 @@ public class EditQuestionActivity extends AppCompatActivity {
 
 
 
-        // Spinner Courses
-        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.courses, android.R.layout.simple_spinner_item);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCourses.setAdapter(spinnerAdapter);
-
-        spinnerCourses.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String text = parent.getItemAtPosition(position).toString();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                spinnerCourses.setSelection(0);
-            }
-        });
 
     }
     void getAndSetIntentData(){

@@ -24,7 +24,6 @@ import com.example.examapp.Views.Course2;
 import com.example.examapp.Views.Course3;
 import com.example.examapp.Views.Course4;
 import com.example.examapp.Views.EditQuestionActivity;
-import com.example.examapp.helper.DatabaseHelper;
 import com.example.examapp.helper.DatabaseHelper1;
 
 import java.util.ArrayList;
@@ -32,33 +31,33 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
-    Button btnEdit;
-    Context context;
-    List<Data_Question> questionList;
-    DatabaseHelper1 DBH;
+
+    private Context context;
+    private List<Data_Question> question_List;
+    private DatabaseHelper1 DBH;
 
     public RecyclerViewAdapter(Context context, List<Data_Question> allData) {
         this.context = context;
-        this.questionList = allData;
+        this.question_List = allData;
     }
 
     public RecyclerViewAdapter(Context context, List<Data_Question> questionList, DatabaseHelper1 DBH) {
         this.context = context;
-        this.questionList = questionList;
+        question_List = questionList;
         this.DBH = DBH;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v;
-        v= LayoutInflater.from(parent.getContext()).inflate(R.layout.question_item,parent,false);
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.question_item,parent,false);
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-        final Data_Question data = questionList.get(position);
+        final Data_Question data = question_List.get(position);
         holder.questionText.setText(data.getText());
         holder.questionMark.setText("Mark : " + data.getMark());
         holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -70,8 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(context,String.valueOf(questionList.g),Toast.LENGTH_LONG).show();
-//                btnEdit.findViewById(R.id.questionEditBtn);
+                Toast.makeText(context,String.valueOf(data.getId()),Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(context, EditQuestionActivity.class);
                 intent.putExtra("position",String.valueOf(data.getId()));
@@ -84,7 +82,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return questionList.size();
+        return question_List.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -92,23 +90,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public Button delete, edit;
         public MyViewHolder(@NonNull View v) {
             super(v);
-            questionText =  (TextView) v.findViewById(R.id.questionText);
-            questionMark =  (TextView) v.findViewById(R.id.questionMark);
+            questionText = v.findViewById(R.id.questionText);
+            questionMark = v.findViewById(R.id.questionMark);
             delete = v.findViewById(R.id.questionDeleteBtn);
             edit = v.findViewById(R.id.questionEditBtn);
 
         }
     }
     public void deleteData(int position){
-        DBH = new DatabaseHelper1(context);
-        DBH.deleteDataFromQuestion(questionList.get(position));
-        questionList.remove(position);
+        DBH.deleteDataFromQuestion(question_List.get(position));
+        question_List.remove(position);
 //        ActivityQuestionMangment.notifyAdapter();
-
-
         Course1.notifyAdapter();
-//        Course2.notifyAdapter();
-//        Course3.notifyAdapter();
-//        Course4.notifyAdapter();
+        Course2.notifyAdapter();
+        Course3.notifyAdapter();
+        Course4.notifyAdapter();
     }
 }

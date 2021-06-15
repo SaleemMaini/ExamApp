@@ -19,7 +19,8 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.examapp.Controller.QuestionController;
+//import com.example.examapp.Controller.QuestionController;
+import com.example.examapp.Model.Data_Answer;
 import com.example.examapp.Model.Data_Question;
 import com.example.examapp.R;
 import com.example.examapp.helper.DatabaseHelper1;
@@ -79,7 +80,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Toast.makeText(AddQuestionActivity.this, "Done", Toast.LENGTH_LONG).show();
                         RR1.setText(editText1.getText());
-                        alertDialog.hide();
+                        alertDialog.cancel();
 
                     }
                 });
@@ -109,21 +110,21 @@ public class AddQuestionActivity extends AppCompatActivity {
 
                 RR2 = findViewById(R.id.radioButton2);
 
-                AlertDialog alertDialog = builder.create();
+                AlertDialog alertDialog2 = builder.create();
 
-                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                alertDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(AddQuestionActivity.this, "Done", Toast.LENGTH_LONG).show();
                         RR2.setText(editText1.getText());
-                        alertDialog.hide();
+                        alertDialog2.cancel();
 
                     }
                 });
 
-                alertDialog.show();
+                alertDialog2.show();
             }
         });
 
@@ -148,21 +149,21 @@ public class AddQuestionActivity extends AppCompatActivity {
 
                 RR3 = findViewById(R.id.radioButton3);
 
-                AlertDialog alertDialog = builder.create();
+                AlertDialog alertDialog3 = builder.create();
 
-                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                alertDialog3.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(AddQuestionActivity.this, "Done", Toast.LENGTH_LONG).show();
                         RR3.setText(editText1.getText());
-                        alertDialog.hide();
+                        alertDialog3.cancel();
 
                     }
                 });
 
-                alertDialog.show();
+                alertDialog3.show();
             }
         });
 
@@ -187,42 +188,55 @@ public class AddQuestionActivity extends AppCompatActivity {
 
                 RR4 = findViewById(R.id.radioButton4);
 
-                AlertDialog alertDialog = builder.create();
+                AlertDialog alertDialog4 = builder.create();
 
-                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                alertDialog4.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(AddQuestionActivity.this, "Done", Toast.LENGTH_LONG).show();
                         RR4.setText(editText1.getText());
-                        alertDialog.hide();
+                        alertDialog4.cancel();
 
                     }
                 });
 
-                alertDialog.show();
+                alertDialog4.show();
             }
         });
 
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Data_Answer data_answer = new Data_Answer();
                 String Qustion = Qtxt.getText().toString();
                 int RB = 0;
                 if (RR1.isChecked()) {
                     RB = 1;
+                    data_answer.setStatus(1);
                 }
                 if (RR2.isChecked()) {
                     RB = 2;
+                    data_answer.setStatus(1);
                 }
                 if (RR3.isChecked()) {
                     RB = 3;
+                    data_answer.setStatus(1);
                 }
                 if (RR4.isChecked()) {
                     RB = 4;
+                    data_answer.setStatus(1);
                 }
+                data_answer.setText(RR1.getText().toString());
+                data_answer.setText(RR2.getText().toString());
+                data_answer.setText(RR3.getText().toString());
+                data_answer.setText(RR4.getText().toString());
+//                data_answer.setId_question(Q); // get last id +1
+                databaseHelper1.insertDataToAnswer(data_answer);
+
+
+
                 String txtMark = Mark.getText().toString();
                 int idCourse = spinnerCourses.getSelectedItemPosition();
 
@@ -230,13 +244,18 @@ public class AddQuestionActivity extends AppCompatActivity {
 //                if(RR3.isChecked()){ RB = RR4.getText().toString(); }
 
                 Data_Question DQ = new Data_Question();
-                ContentValues values = new ContentValues();
-                values.put("text", Qustion);
-                values.put("id_answer", RB);
-                values.put("mark", txtMark);
-                values.put("id_course", idCourse);
+                DQ.setText(Qustion);
+                DQ.setId_answer(RB);
+                DQ.setMark(Integer.parseInt(txtMark));
+                DQ.setId_course(idCourse);
+                long inserted = new DatabaseHelper1(getApplicationContext()).insertDataToQuestion(DQ);
 
-                long inserted = new QuestionController(AddQuestionActivity.this).insert(values);
+//                ContentValues values = new ContentValues();
+//                values.put("text", Qustion);
+//                values.put("id_answer", RB);
+//                values.put("mark", txtMark);
+//                values.put("id_course", idCourse);
+//                long inserted = new QuestionController(AddQuestionActivity.this).insert(values);
 
                 if (inserted > 0) {
                     Qtxt.setText("");

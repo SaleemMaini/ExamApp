@@ -16,7 +16,7 @@ public abstract class BaseController {
         this.setActivity(activity);
     }
 
-    public abstract void create();
+//    public abstract void create();
 
     public abstract boolean login(String username, String password);
 
