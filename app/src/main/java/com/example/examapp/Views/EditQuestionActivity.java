@@ -58,6 +58,7 @@ public class EditQuestionActivity extends AppCompatActivity {
         databaseHelper1 = new DatabaseHelper1(this);
         QuestionInfo = databaseHelper1.getQuestionId(position) ;
 
+
         if(QuestionInfo != null){
             Qtxt.setText(QuestionInfo.getText());
             int id_answer = QuestionInfo.getId_answer();
@@ -93,8 +94,6 @@ public class EditQuestionActivity extends AppCompatActivity {
 
                 editText1 = view1.findViewById(R.id.txt_edit);
                 btn1 = view1.findViewById(R.id.btn_edit);
-
-
 
                 AlertDialog alertDialog = builder.create();
 

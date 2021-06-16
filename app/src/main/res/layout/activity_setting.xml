@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Views.SettingActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:background="@drawable/header_bg"
+        android:backgroundTint="@color/red">
+
+        <ImageView
+            android:layout_width="77dp"
+            android:layout_height="77dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="75dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="165dp"
+            android:capitalize="none"
+            android:editable="false"
+            android:text="Setting"
+            android:textColor="@color/white"
+            android:textSize="25dp" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="1"
+        android:text="Choose Theme"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:text="Red"
+        app:backgroundTint="@color/red" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:text="Dark Blue"
+        app:backgroundTint="@color/darkBlue" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:text="Teal"
+        app:backgroundTint="@color/teal_700" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Mute Sound" />
+
+</LinearLayout>

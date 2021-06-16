@@ -53,7 +53,7 @@
                     android:id="@+id/button8"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:text="course1"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
 
@@ -61,7 +61,7 @@
                     android:id="@+id/button9"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:text="course3"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
             </LinearLayout>
@@ -75,7 +75,7 @@
                     android:id="@+id/button10"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:text="course2"
                     app:backgroundTint="?attr/colorPrimaryVariant"
                     app:iconGravity="textTop"
@@ -85,7 +85,7 @@
                     android:id="@+id/button11"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:text="course4"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
             </LinearLayout>

@@ -9,19 +9,21 @@ import android.view.View;
 import android.widget.Button;
 
 public class ActivityAdminDashboard extends AppCompatActivity {
-    Button questionManagementBtn;
+    Button questionManagementBtn,viewStudentMarksBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
         questionManagementBtn = findViewById(R.id.questionManagementBtn);
+        viewStudentMarksBtn = findViewById(R.id.viewStudentMarksBtn);
+
         questionManagementBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ActivityQuestionMangment.class));
             }
         });
-        findViewById(R.id.btn_VSM).setOnClickListener(new View.OnClickListener() {
+        viewStudentMarksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), AddQuestionActivity.class));
