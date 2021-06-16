@@ -54,7 +54,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:text="Button"
+                    android:text="course1"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
 
                 <Button
@@ -62,7 +62,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:text="Button"
+                    android:text="course3"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
             </LinearLayout>
 
@@ -76,8 +76,8 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
+                    android:text="course2"
                     app:backgroundTint="?attr/colorPrimaryVariant"
-                    app:icon="@drawable/logo"
                     app:iconGravity="textTop"
                     app:iconSize="80dp" />
 
@@ -86,7 +86,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:text="Button"
+                    android:text="course4"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
             </LinearLayout>
         </LinearLayout>
