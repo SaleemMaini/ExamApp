@@ -27,6 +27,8 @@ public class ActivityQuestionMangment extends AppCompatActivity {
         setContentView(R.layout.activity_question_mangment);
 
 
+
+
         TabLayout tabLayout = findViewById(R.id.tabBar);
         TabItem Course1 = findViewById(R.id.Course1);
         TabItem Course2 = findViewById(R.id.Course2);
@@ -66,6 +68,7 @@ public class ActivityQuestionMangment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityQuestionMangment.this, AddQuestionActivity.class);
+//                intent.putExtra("position",String.valueOf(data.getId()));
                 startActivity(intent);
                 finish();
             }

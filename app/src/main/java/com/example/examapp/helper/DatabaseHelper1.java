@@ -297,7 +297,7 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
 
 // get all data
 
-    public List<Data_Question> getAllData() {
+    public List<Data_Question> getAllDataQuestions() {
         List<Data_Question> allData = new ArrayList<>();
         String query = "SELECT text,mark FROM "+ TABLE4_NAME;
 //                + " ORDER BY " + "text" + " DESC"; //  query must be completed
@@ -311,6 +311,23 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
               allData.add(data1);
 
           }while (cursor.moveToNext());
+        db.close();
+        return allData;
+    }
+    public List<Data_Answer> getAllDataAnswer() {
+        List<Data_Answer> allData = new ArrayList<>();
+        String query = "SELECT* FROM "+ TABLE5_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery( query ,null);
+        if(cursor.moveToFirst())
+            do{
+                Data_Answer data1 = new Data_Answer();
+                data1.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                data1.setText( cursor.getString(cursor.getColumnIndex("text")));
+                data1.setStatus(cursor.getInt(cursor.getColumnIndex("status")));
+                data1.setId_question(cursor.getInt(cursor.getColumnIndex("id_question")));
+                allData.add(data1);
+            }while (cursor.moveToNext());
         db.close();
         return allData;
     }
@@ -399,6 +416,7 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
 
 
 
+
     public Data_Admin getData_Admin(int id){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query("admin",
@@ -452,28 +470,36 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
 
 
 
+    public int getLastIdOfQuestion() {
+        String query = "SELECT * FROM question ORDER BY id  DESC LIMIT " + 1;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery( query ,null);
+        if (cursor.getCount() == 0) {
+            return 0;
+        }
+        if (cursor.moveToFirst()) do {
+            int id = cursor.getInt(0);
+            if (id > 0) return id;
+        } while (cursor.moveToNext());
+
+        return 0;
+    }
+
     public  Data_Question getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query("question",
-                new String[]{"id",
-                        "text",
-                        "id_answer",
-                        "mark",
-                        "id_course"},
+                new String[]{"id"},
                 "id=?", new String[]{String.valueOf(id)},
-                null,null,null,null);
+                null,null,"id ",null);
 
         if(cursor != null  && cursor.getCount()>0)
             cursor.moveToFirst();
-            Data_Question data = new Data_Question(
-                         Integer.parseInt(cursor.getString(0)),
-                        cursor.getString(1) ,
-                        Integer.parseInt(cursor.getString(2)) ,
-                        Integer.parseInt(cursor.getString(3))
-                        ,Integer.parseInt(cursor.getString(4))
-            );
-            cursor.close();
-            return data;
+        Data_Question data = new Data_Question(
+                Integer.parseInt(cursor.getString(0))
+
+        );
+        cursor.close();
+        return data;
     }
     public Data_Question getQuestionId(int id) {
         SQLiteDatabase db = this.getReadableDatabase();

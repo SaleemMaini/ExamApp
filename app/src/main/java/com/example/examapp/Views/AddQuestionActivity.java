@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,8 @@ import com.example.examapp.Model.Data_Question;
 import com.example.examapp.R;
 import com.example.examapp.helper.DatabaseHelper1;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
 
 public class AddQuestionActivity extends AppCompatActivity {
     Button btnEditDialog,btnEditDialog1,btnEditDialog2,btnEditDialog3,btnadd;
@@ -209,39 +212,46 @@ public class AddQuestionActivity extends AppCompatActivity {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Data_Answer data_answer = new Data_Answer();
+                Data_Answer data_answer1 = new Data_Answer();
+                Data_Answer data_answer2 = new Data_Answer();
+                Data_Answer data_answer3 = new Data_Answer();
+                Data_Answer data_answer4 = new Data_Answer();
+
                 String Qustion = Qtxt.getText().toString();
                 int RB = 0;
                 if (RR1.isChecked()) {
                     RB = 1;
-                    data_answer.setStatus(1);
+                    data_answer1.setStatus(1);
                 }
                 if (RR2.isChecked()) {
                     RB = 2;
-                    data_answer.setStatus(1);
+                    data_answer2.setStatus(1);
                 }
                 if (RR3.isChecked()) {
                     RB = 3;
-                    data_answer.setStatus(1);
+                    data_answer3.setStatus(1);
                 }
                 if (RR4.isChecked()) {
                     RB = 4;
-                    data_answer.setStatus(1);
+                    data_answer4.setStatus(1);
                 }
-                data_answer.setText(RR1.getText().toString());
-                data_answer.setText(RR2.getText().toString());
-                data_answer.setText(RR3.getText().toString());
-                data_answer.setText(RR4.getText().toString());
-//                data_answer.setId_question(Q); // get last id +1
-                databaseHelper1.insertDataToAnswer(data_answer);
+                data_answer1.setText(RR1.getText().toString());
+                data_answer2.setText(RR2.getText().toString());
+                data_answer3.setText(RR3.getText().toString());
+                data_answer4.setText(RR4.getText().toString());
 
-
-
+                int questionId = databaseHelper1.getLastIdOfQuestion() + 1; // get last id +1 From Question Table
+                data_answer1.setId_question(questionId);
+                data_answer2.setId_question(questionId);
+                data_answer3.setId_question(questionId);
+                data_answer4.setId_question(questionId);
+                databaseHelper1.insertDataToAnswer(data_answer1);
+                databaseHelper1.insertDataToAnswer(data_answer2);
+                databaseHelper1.insertDataToAnswer(data_answer3);
+                databaseHelper1.insertDataToAnswer(data_answer4);
                 String txtMark = Mark.getText().toString();
                 int idCourse = spinnerCourses.getSelectedItemPosition();
 
-
-//                if(RR3.isChecked()){ RB = RR4.getText().toString(); }
 
                 Data_Question DQ = new Data_Question();
                 DQ.setText(Qustion);
@@ -289,5 +299,14 @@ public class AddQuestionActivity extends AppCompatActivity {
                 spinnerCourses.setSelection(0);
             }
         });
+        List<Data_Answer> dataA = databaseHelper1.getAllDataAnswer();
+        for(Data_Answer data : dataA){
+            String myInfoAnswer = "id:" + data.getId() + " text: "+data.getText()+" status : "+data.getStatus()
+                    + " id_question: "+data.getId_question();
+            Log.d("dataAnswer", myInfoAnswer);}
+
+        int id  = databaseHelper1.getLastIdOfQuestion();
+        String myInfo = " id : " + id;
+        Log.d("data_id", myInfo);
     }
 }

@@ -38,6 +38,10 @@ public class Data_Question {
         this.mark = mark;
     }
 
+    public Data_Question(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
