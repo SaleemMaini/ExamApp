@@ -69,8 +69,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,String.valueOf(data.getId()),Toast.LENGTH_LONG).show();
-
                 Intent intent = new Intent(context, EditQuestionActivity.class);
                 intent.putExtra("position",String.valueOf(data.getId()));
                 context.startActivity(intent);

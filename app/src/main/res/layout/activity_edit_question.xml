@@ -53,7 +53,7 @@
 
                 <RadioGroup
                     android:id="@+id/radioGroupEdit"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp">
 
@@ -61,21 +61,21 @@
                         android:id="@+id/radioButton1Edit"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
-                        android:editable="true"
+                        android:layout_marginBottom="25dp"
                         android:text="RadioButton" />
 
                     <RadioButton
                         android:id="@+id/radioButton2Edit"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
-                        android:editable="true"
+                        android:layout_marginBottom="25dp"
                         android:text="RadioButton" />
 
                     <RadioButton
                         android:id="@+id/radioButton3Edit"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
-                        android:editable="true"
+                        android:layout_marginBottom="25dp"
                         android:text="RadioButton" />
 
                     <RadioButton
@@ -83,66 +83,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_marginLeft="0dp"
-                        android:editable="true"
+                        android:layout_marginBottom="25dp"
                         android:text="RadioButton" />
 
                 </RadioGroup>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/E1Edit"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="17dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#00FFFFFF"
-                        android:shadowColor="#00FFFFFF"
-                        app:backgroundTint="#00FFFFFF"
-                        app:icon="@drawable/edit"
-                        app:iconSize="25dp"
-                        app:iconTint="?attr/colorPrimaryVariant" />
-
-                    <Button
-                        android:id="@+id/E2Edit"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="17dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#00FFFFFF"
-                        app:backgroundTint="#00FFFFFF"
-                        app:icon="@drawable/edit"
-                        app:iconSize="25dp"
-                        app:iconTint="?attr/colorPrimaryVariant" />
-
-                    <Button
-                        android:id="@+id/E3Edit"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="17dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#00FFFFFF"
-                        app:backgroundTint="#00FFFFFF"
-                        app:icon="@drawable/edit"
-                        app:iconSize="25dp"
-                        app:iconTint="?attr/colorPrimaryVariant" />
-
-                    <Button
-                        android:id="@+id/E4Edit"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="17dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#00FFFFFF"
-                        app:backgroundTint="#00FFFFFF"
-                        app:icon="@drawable/edit"
-                        app:iconSize="25dp"
-                        app:iconTint="?attr/colorPrimaryVariant" />
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -152,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="48dp"
+                android:backgroundTint="?attr/colorPrimary"
                 android:text="Save" />
         </LinearLayout>
     </ScrollView>

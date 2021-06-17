@@ -6,6 +6,10 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <ScrollView
+        android:id="@+id/Scroll1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,8 +43,8 @@
         </FrameLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="463dp"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal">
@@ -51,48 +55,43 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button8"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="5dp"
+                    android:id="@+id/courseOneBtn"
+                    android:layout_width="300dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="10dp"
+                    android:onClick="startExam"
                     android:text="course1"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
+                <Button
+                    android:id="@+id/courseTwoBtn"
+                    android:layout_width="300dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="10dp"
+                    android:onClick="startExam"
+                    android:text="course2"
+                    app:backgroundTint="?attr/colorPrimaryVariant" />
 
                 <Button
-                    android:id="@+id/button9"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="5dp"
+                    android:id="@+id/courseThreeBtn"
+                    android:layout_width="300dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="10dp"
+                    android:onClick="startExam"
                     android:text="course3"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button10"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="5dp"
-                    android:text="course2"
-                    app:backgroundTint="?attr/colorPrimaryVariant"
-                    app:iconGravity="textTop"
-                    app:iconSize="80dp" />
-
-                <Button
-                    android:id="@+id/button11"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="5dp"
+                    android:id="@+id/courseFourBtn"
+                    android:layout_width="300dp"
+                    android:layout_height="80dp"
+                    android:onClick="startExam"
                     android:text="course4"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
 
-
+    </ScrollView>
 </LinearLayout>

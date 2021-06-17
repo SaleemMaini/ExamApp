@@ -16,6 +16,8 @@ public class ActivityCourses extends AppCompatActivity {
     //    Theme
     SharedPreferences app_preferences;
     int appTheme;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,21 +27,9 @@ public class ActivityCourses extends AppCompatActivity {
         setTheme(appTheme);
 //        End set Theme
         setContentView(R.layout.activity_courses);
-
-        findViewById(R.id.button9).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            }
-        });
-
-        findViewById(R.id.button10).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            }
-        });
     }
+
+    // Start Setting Icon //
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_activity_menu,menu);
@@ -54,5 +44,14 @@ public class ActivityCourses extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), SettingActivity.class));
         }
         return super.onOptionsItemSelected(item);
+    }
+    // End Setting Icon //
+
+    // Start Exam //
+    public void startExam(View v){
+        int selectedCourse = v.getId();
+        Intent i = new Intent(ActivityCourses.this,QuestionOne.class);
+        i.putExtra("Selected Course Id", selectedCourse);
+        startActivity(i);
     }
 }

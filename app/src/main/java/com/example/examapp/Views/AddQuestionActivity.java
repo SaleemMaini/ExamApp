@@ -270,12 +270,6 @@ public class AddQuestionActivity extends AppCompatActivity {
                 DQ.setId_course(idCourse);
                 long inserted = new DatabaseHelper1(getApplicationContext()).insertDataToQuestion(DQ);
 
-//                ContentValues values = new ContentValues();
-//                values.put("text", Qustion);
-//                values.put("id_answer", RB);
-//                values.put("mark", txtMark);
-//                values.put("id_course", idCourse);
-//                long inserted = new QuestionController(AddQuestionActivity.this).insert(values);
 
                 if (inserted > 0) {
                     Qtxt.setText("");
