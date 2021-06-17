@@ -9,12 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamApp">
-        <activity android:name=".Views.SettingActivity"></activity>
-        <activity android:name=".Views.QuestionFive" />
-        <activity android:name=".Views.QuestionFour" />
-        <activity android:name=".Views.QuestionThree" />
-        <activity android:name=".Views.QuestionTwo" />
-        <activity android:name=".Views.QuestionOne" />
+        <activity android:name=".Views.ExamActivity"></activity>
+        <activity android:name=".Views.SettingActivity" />
         <activity android:name=".Views.EditQuestionActivity" />
         <activity android:name=".Views.AddQuestionActivity" />
         <activity android:name=".Views.ActivityQuestionMangment" />

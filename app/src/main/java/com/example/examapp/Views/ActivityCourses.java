@@ -50,7 +50,7 @@ public class ActivityCourses extends AppCompatActivity {
     // Start Exam //
     public void startExam(View v){
         int selectedCourse = v.getId();
-        Intent i = new Intent(ActivityCourses.this,QuestionOne.class);
+        Intent i = new Intent(ActivityCourses.this,ExamActivity.class);
         i.putExtra("Selected Course Id", selectedCourse);
         startActivity(i);
     }

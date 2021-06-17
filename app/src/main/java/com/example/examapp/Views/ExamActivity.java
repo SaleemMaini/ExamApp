@@ -3,7 +3,6 @@ package com.example.examapp.Views;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -14,11 +13,12 @@ import android.widget.Button;
 
 import com.example.examapp.R;
 
-public class QuestionOne extends AppCompatActivity {
+public class ExamActivity extends AppCompatActivity {
     Button nextBtnQuestion1, prvBtnQuestion1;
 //    Theme
     SharedPreferences app_preferences;
     int appTheme;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,15 +27,15 @@ public class QuestionOne extends AppCompatActivity {
         appTheme = app_preferences.getInt("theme", 0);
         setTheme(appTheme);
 //        End set Theme
-        setContentView(R.layout.activity_question_one);
+        setContentView(R.layout.activity_exam);
 
-        //        Next Btn
-
+//        Next Btn
         AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         amanager.setStreamMute(AudioManager.STREAM_MUSIC, false);
 
         nextBtnQuestion1 = findViewById(R.id.nextBtnQuestion1);
         final MediaPlayer nextSound = MediaPlayer.create(this,R.raw.next);
+
         nextBtnQuestion1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,8 +50,11 @@ public class QuestionOne extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 previousSound.start();
+
+
             }
         });
-    }
 
+
+    }
 }
