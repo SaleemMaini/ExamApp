@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -218,7 +219,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                 alertDialog4.show();
             }
         });
-
+        final MediaPlayer addSound = MediaPlayer.create(this,R.raw.add);
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -283,6 +284,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+                addSound.start();
             }
         });
 

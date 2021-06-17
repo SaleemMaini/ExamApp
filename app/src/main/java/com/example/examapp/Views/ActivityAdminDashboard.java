@@ -8,6 +8,7 @@ import com.example.examapp.R;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -32,16 +33,19 @@ public class ActivityAdminDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_admin_dashboard);
         questionManagementBtn = findViewById(R.id.questionManagementBtn);
         viewStudentMarksBtn = findViewById(R.id.viewStudentMarksBtn);
+        final MediaPlayer enterPageSound = MediaPlayer.create(this,R.raw.enterpage);
 
         questionManagementBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                enterPageSound.start();
                 startActivity(new Intent(getApplicationContext(), ActivityQuestionMangment.class));
             }
         });
         viewStudentMarksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                enterPageSound.start();
                 startActivity(new Intent(getApplicationContext(), AddQuestionActivity.class));
             }
         });

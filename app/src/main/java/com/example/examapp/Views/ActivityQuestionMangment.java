@@ -2,6 +2,7 @@ package com.example.examapp.Views;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -40,8 +41,6 @@ public class ActivityQuestionMangment extends AppCompatActivity {
         setContentView(R.layout.activity_question_mangment);
 
 
-
-
         TabLayout tabLayout = findViewById(R.id.tabBar);
         TabItem Course1 = findViewById(R.id.Course1);
         TabItem Course2 = findViewById(R.id.Course2);
@@ -76,10 +75,12 @@ public class ActivityQuestionMangment extends AppCompatActivity {
         });
 
         //      addQuestionFab
+        final MediaPlayer enterPageSound = MediaPlayer.create(this,R.raw.enterpage);
         addQuestionFab =findViewById(R.id.addQuestionFab);
         addQuestionFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                enterPageSound.start();
                 Intent intent = new Intent(ActivityQuestionMangment.this, AddQuestionActivity.class);
 //                intent.putExtra("position",String.valueOf(data.getId()));
                 startActivity(intent);

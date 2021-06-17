@@ -30,8 +30,6 @@ public class ExamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_exam);
 
 //        Next Btn
-        AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        amanager.setStreamMute(AudioManager.STREAM_MUSIC, false);
 
         nextBtnQuestion1 = findViewById(R.id.nextBtnQuestion1);
         final MediaPlayer nextSound = MediaPlayer.create(this,R.raw.next);
@@ -50,8 +48,6 @@ public class ExamActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 previousSound.start();
-
-
             }
         });
 

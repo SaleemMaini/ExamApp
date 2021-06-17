@@ -30,6 +30,7 @@ public class SettingActivity extends AppCompatActivity {
 
     Switch switchMute;
     TextView tv;
+    int switchStatus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,24 +39,33 @@ public class SettingActivity extends AppCompatActivity {
         appTheme = app_preferences.getInt("theme", 0);
         setTheme(appTheme);
 //        End set Theme
+        switchStatus = app_preferences.getInt("muteSwitch",0);
         setContentView(R.layout.activity_setting);
+
+        switchMute = findViewById(R.id.switchMute);
+        if (switchStatus == 1) {
+            switchMute.setChecked(true);
+        }
         utils = new Utils();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = sharedPreferences.edit();
 
 //        Mute Sound
-        switchMute = findViewById(R.id.switchMute);
         tv = findViewById(R.id.textViewSetting);
         switchMute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-//                    AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-//                    amanager.setStreamMute(AudioManager.STREAM_MUSIC, true);
+                    AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+                    amanager.setStreamMute(AudioManager.STREAM_MUSIC, true);
+                    editor.putInt("muteSwitch", 1);
+                    editor.commit();
                 }
                 else {
                     AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
                     amanager.setStreamMute(AudioManager.STREAM_MUSIC, false);
+                    editor.putInt("muteSwitch", 0);
+                    editor.commit();
                 }
             }
         });

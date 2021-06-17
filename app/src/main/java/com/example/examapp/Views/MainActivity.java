@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         valuesStd.setPassword("student");
         new DatabaseHelper1(this).insertDataToStudent(valuesStd);
 
-
+        final MediaPlayer enterPageSound = MediaPlayer.create(this,R.raw.enterpage);
         login.setOnClickListener(v -> {
             if (password.getText().toString().isEmpty() || username.getText().toString().isEmpty()) {
                 Snackbar.make(activity, "Username or password not found", Snackbar.LENGTH_LONG).show();
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean logged = new DatabaseHelper1(MainActivity.this).login_admin(username.getText().toString(), password.getText().toString());
                 if (logged) {
+                    enterPageSound.start();
                     startActivity(new Intent(getApplicationContext(), ActivityAdminDashboard.class));
                 } else {
                     Snackbar.make(activity, "Error in username or password", Snackbar.LENGTH_LONG).show();
@@ -97,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean logged = new DatabaseHelper1(MainActivity.this).login_student(username.getText().toString(), password.getText().toString());
                 if (logged) {
+                    enterPageSound.start();
                     startActivity(new Intent(getApplicationContext(), ActivityCourses.class));
                 } else {
                     Snackbar.make(activity, "Error in username or password", Snackbar.LENGTH_LONG).show();
