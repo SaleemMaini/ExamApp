@@ -316,7 +316,25 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
     }
     public List<Data_Answer> getAllDataAnswer() {
         List<Data_Answer> allData = new ArrayList<>();
-        String query = "SELECT* FROM "+ TABLE5_NAME;
+        String query = "SELECT * FROM "+ TABLE5_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery( query ,null);
+        if(cursor.moveToFirst())
+            do{
+                Data_Answer data1 = new Data_Answer();
+                data1.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                data1.setText( cursor.getString(cursor.getColumnIndex("text")));
+                data1.setStatus(cursor.getInt(cursor.getColumnIndex("status")));
+                data1.setId_question(cursor.getInt(cursor.getColumnIndex("id_question")));
+                allData.add(data1);
+            }while (cursor.moveToNext());
+        db.close();
+        return allData;
+    }
+    public List<Data_Answer> getAllDataAnswerForQuestion(int id) {
+        List<Data_Answer> allData = new ArrayList<>();
+        String query = "SELECT * FROM "+ TABLE4_NAME + " , " + TABLE5_NAME + " WHERE " + TABLE5_NAME + ".id_question = " + TABLE4_NAME + ".id"
+               + " AND " + TABLE5_NAME + ".id_question = " + id;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery( query ,null);
         if(cursor.moveToFirst())

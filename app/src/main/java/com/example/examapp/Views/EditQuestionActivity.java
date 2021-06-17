@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 //import com.example.examapp.Controller.QuestionController;
+import com.example.examapp.Model.Data_Answer;
 import com.example.examapp.Model.Data_Question;
 import com.example.examapp.R;
 
 import com.example.examapp.helper.DatabaseHelper1;
+
+import java.util.List;
 
 public class EditQuestionActivity extends AppCompatActivity {
     private Button btnEditDialog,btnEditDialog1,btnEditDialog2,btnEditDialog3,btnsv;
@@ -85,6 +89,13 @@ public class EditQuestionActivity extends AppCompatActivity {
                 RR4.setChecked(true);
             }
             Mark.setText(String.valueOf(QuestionInfo.getMark()));
+            List<Data_Answer> dataA = databaseHelper1.getAllDataAnswerForQuestion(QuestionInfo.id);
+            for(Data_Answer data : dataA) {
+                RR1.setText(dataA.get(0).getText());
+                RR2.setText(dataA.get(1).getText());
+                RR3.setText(dataA.get(2).getText());
+                RR4.setText(dataA.get(3).getText());
+            }
         }
 
 
