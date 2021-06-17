@@ -18,13 +18,13 @@
             android:layout_width="match_parent"
             android:layout_height="270dp"
             android:background="@drawable/header_bg"
-            android:backgroundTint="@color/red">
+            android:backgroundTint="?attr/colorPrimary">
 
             <ImageView
                 android:layout_width="77dp"
                 android:layout_height="77dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="50dp"
                 android:src="@drawable/logo" />
 
             <TextView
@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="165dp"
+                android:layout_marginTop="150dp"
                 android:text="Dashboard"
                 android:textColor="@color/white"
                 android:textSize="25dp" />

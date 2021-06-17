@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,10 +37,18 @@ public class AddQuestionActivity extends AppCompatActivity {
     RadioButton RR1, RR2, RR3, RR4;
     Spinner spinnerCourses;
     DatabaseHelper1 databaseHelper1;
+    //    Theme
+    SharedPreferences app_preferences;
+    int appTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//      Start  Set Theme
+        app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        appTheme = app_preferences.getInt("theme", 0);
+        setTheme(appTheme);
+//        End set Theme
         setContentView(R.layout.activity_add_question);
 
         databaseHelper1 = new DatabaseHelper1(this);

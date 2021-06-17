@@ -14,9 +14,26 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="RedTheme" parent="Theme.ExamApp">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryDark">@color/darkBlue</item>
+    </style>
+
+    <style name="DarkBlueTheme" parent="Theme.ExamApp">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/darkBlue</item>
+        <item name="colorPrimaryDark">@color/red</item>
+    </style>
+
+    <style name="tealTheme" parent="Theme.ExamApp">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/teal_700</item>
+        <item name="colorPrimaryDark">@color/darkBlue</item>
+    </style>
 
 
-<!--    <style name="HiddenTitleTheme" parent="Theme.ExamApp">-->
+    <!--    <style name="HiddenTitleTheme" parent="Theme.ExamApp">-->
 <!--        <item name="windowNoTitle">true</item>-->
 <!--        <item name="windowActionBar">false</item>-->
 <!--    </style>-->
