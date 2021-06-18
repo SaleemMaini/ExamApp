@@ -2,16 +2,17 @@ package com.example.examapp.Model;
 
 public class Data_Exam {
     public int id;
-    public int id_student;
+    public int student_id;
     public int mark;
+    public int course_id;
 
     public Data_Exam() {
     }
 
-    public Data_Exam(int id, int id_student, int mark) {
-        this.id = id;
-        this.id_student = id_student;
+    public Data_Exam(int student_id, int mark, int course_id) {
+        this.student_id = student_id;
         this.mark = mark;
+        this.course_id = course_id;
     }
 
     public int getId() {
@@ -22,12 +23,12 @@ public class Data_Exam {
         this.id = id;
     }
 
-    public int getId_student() {
-        return id_student;
+    public int getStudent_id() {
+        return student_id;
     }
 
-    public void setId_student(int id_student) {
-        this.id_student = id_student;
+    public void setStudent_id(int student_id) {
+        this.student_id = student_id;
     }
 
     public int getMark() {
@@ -36,5 +37,13 @@ public class Data_Exam {
 
     public void setMark(int mark) {
         this.mark = mark;
+    }
+
+    public int getCourse_id() {
+        return course_id;
+    }
+
+    public void setCourse_id(int course_id) {
+        this.course_id = course_id;
     }
 }

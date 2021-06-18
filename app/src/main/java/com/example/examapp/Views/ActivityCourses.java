@@ -18,6 +18,7 @@ public class ActivityCourses extends AppCompatActivity {
     SharedPreferences app_preferences;
     int appTheme;
 
+    String position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,10 @@ public class ActivityCourses extends AppCompatActivity {
         setTheme(appTheme);
 //        End set Theme
         setContentView(R.layout.activity_courses);
+
+        Bundle bundle = getIntent().getExtras();
+        position = bundle.getString("Selected_Student_Id") ;
+
     }
 
     // Start Setting Icon //
@@ -51,8 +56,10 @@ public class ActivityCourses extends AppCompatActivity {
     // Start Exam //
     public void startExam(View v){
         int selectedCourse = v.getId();
+        String nameStudent = position;
         Intent i = new Intent(ActivityCourses.this,ExamActivity.class);
-        i.putExtra("Selected Course Id", selectedCourse);
+        i.putExtra("Selected_Course_Id", selectedCourse);
+        i.putExtra("Selected_Student_Id", nameStudent);
         startActivity(i);
     }
 }

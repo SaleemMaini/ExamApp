@@ -23,7 +23,6 @@ public class EditQuestionActivity extends AppCompatActivity {
     private EditText Qtxt,Mark;
     private RadioButton RR1, RR2, RR3, RR4;
     private DatabaseHelper1 databaseHelper1;
-//    private QuestionController questionController;
     Data_Question QuestionInfo;
     private EditText questionText,questionMark;
     int position;

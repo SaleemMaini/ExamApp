@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="150dp"
-                    android:text="Login"
+                    android:text="Result of your exam"
                     android:textColor="@color/white"
                     android:textSize="25dp" />
 
@@ -52,29 +52,19 @@
                 android:gravity="center|center_vertical"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="70dp"
-                    android:background="#F8F8F8"
-                    android:ems="10"
-                    android:hint="Username"
-                    android:inputType="textPersonName"
-                    android:padding="10dp"
-                    android:textColorHint="#52183041" />
-
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:background="#F8F8F8"
-                    android:ems="10"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:padding="10dp"
-                    android:textColorHint="#52183041" />
+                <TextView
+                    android:id="@+id/textViewResult"
+                    android:layout_width="319dp"
+                    android:layout_height="101dp"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:layout_marginTop="50dp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/OK"
@@ -82,8 +72,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
                     android:layout_marginBottom="30dp"
-                    android:text="login"
+                    android:text="ok"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -92,4 +83,6 @@
 
 
 </LinearLayout>
+
+
 

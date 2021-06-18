@@ -3,10 +3,8 @@ package com.example.examapp.Views;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -15,17 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 //import com.example.examapp.Controller.AdminController;
 //import com.example.examapp.Controller.QuestionController;
 //import com.example.examapp.Controller.StudentController;
 //import com.example.examapp.Controller.CourseController;
-import com.example.examapp.Model.Constant;
 import com.example.examapp.Model.Data_Admin;
-import com.example.examapp.Model.Data_Question;
 import com.example.examapp.Model.Data_Student;
-import com.example.examapp.Model.Utils;
 import com.example.examapp.R;
 import com.example.examapp.helper.DatabaseHelper1;
 import com.google.android.material.snackbar.Snackbar;
@@ -53,20 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
         password = findViewById(R.id.password);
         username = findViewById(R.id.username);
-        login = findViewById(R.id.login);
+        login = findViewById(R.id.OK);
         activity = findViewById(R.id.activity);
         databaseHelper1 = new DatabaseHelper1(this);
 
-
-//        try {
-//            databaseHelper1 = new DatabaseHelper1(this);
-////            new AdminController(this).create();
-////            new StudentController(this).create();
-////            new CourseController(this).create();
-////            new QuestionController(this).create();
-//
-//        } catch (Exception e) {
-//        }
 
         Data_Admin valuesAdm = new Data_Admin();
         valuesAdm.setName("mahmoud");
@@ -100,7 +84,10 @@ public class MainActivity extends AppCompatActivity {
                 boolean logged = new DatabaseHelper1(MainActivity.this).login_student(username.getText().toString(), password.getText().toString());
                 if (logged) {
                     enterPageSound.start();
-                    startActivity(new Intent(getApplicationContext(), ActivityCourses.class));
+                    String selectedStudent = username.getText().toString();
+                    Intent i = new Intent(getApplicationContext(), ActivityCourses.class);
+                    i.putExtra("Selected_Student_Id", selectedStudent);
+                    startActivity(i);
                 } else {
                     Snackbar.make(activity, "Error in username or password", Snackbar.LENGTH_LONG).show();
                 }

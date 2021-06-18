@@ -19,6 +19,7 @@
         android:textSize="20sp" />
 
     <RadioGroup
+        android:id="@+id/RadioGroupExam"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="15dp"
@@ -27,28 +28,28 @@
         android:layout_weight="1">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioButtonAnswer1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
             android:text="RadioButton" />
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/radioButtonAnswer2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
             android:text="RadioButton" />
 
         <RadioButton
-            android:id="@+id/radioButton6"
+            android:id="@+id/radioButtonAnswer3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
             android:text="RadioButton" />
 
         <RadioButton
-            android:id="@+id/radioButton7"
+            android:id="@+id/radioButtonAnswer4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RadioButton" />

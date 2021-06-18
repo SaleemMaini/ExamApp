@@ -190,14 +190,15 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         return  id;
     }
     // insert data to exam table
-//    public  long insertDataToExam(Data_Exam data){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues cv = new ContentValues();
-//        cv.put("mark" , data.getMark());
-//        long id = db.insert(TABLE7_NAME , null , cv);
-//        db.close();
-//        return  id;
-//    }
+    public  long insertDataToExam(Data_Exam data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("id_student" , data.getId_student());
+        cv.put("mark" , data.getMark());
+        long id = db.insert(TABLE7_NAME , null , cv);
+        db.close();
+        return  id;
+    }
 
 // Update Part //
 
