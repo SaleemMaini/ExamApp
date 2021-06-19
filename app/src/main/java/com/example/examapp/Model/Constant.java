@@ -7,4 +7,5 @@ import java.io.Serializable;
 public class Constant implements Serializable {
     public static Boolean isToggle = true;
     public static int theme = R.style.Theme_ExamApp;
+    public static int insertDataToDb = 0;
 }

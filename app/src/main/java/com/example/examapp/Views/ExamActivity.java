@@ -145,8 +145,10 @@ public class ExamActivity extends AppCompatActivity {
     }
     private void showPreviousQuestion(){
         rbGroup.clearCheck();
-        if (questionCounter > 0) {
-            currentQuestion = questionList.get(questionCounter);
+        if (questionCounter == 0 ) {
+            Snackbar.make(findViewById(R.id.LinearLayoutExamActivity), "No previous question", Snackbar.LENGTH_LONG).show();
+        } else {
+            currentQuestion = questionList.get(questionCounter - 1);
             Qtxt.setText(currentQuestion.getText());
             List<Data_Answer> dataA = databaseHelper1.getAllDataAnswerForQuestion(currentQuestion.getId());
             for(Data_Answer data : dataA) {
@@ -158,8 +160,6 @@ public class ExamActivity extends AppCompatActivity {
             questionCounter--;
             answered  = false;
             nextBtnQuestion1.setText("confirm");
-        } else {
-            Snackbar.make(findViewById(R.id.LinearLayoutExamActivity), "No previous question", Snackbar.LENGTH_LONG).show();
         }
     }
     private void finishQuiz() {

@@ -18,8 +18,11 @@ import android.widget.EditText;
 //import com.example.examapp.Controller.QuestionController;
 //import com.example.examapp.Controller.StudentController;
 //import com.example.examapp.Controller.CourseController;
+import com.example.examapp.Model.Constant;
 import com.example.examapp.Model.Data_Admin;
+import com.example.examapp.Model.Data_Question;
 import com.example.examapp.Model.Data_Student;
+import com.example.examapp.Model.Utils;
 import com.example.examapp.R;
 import com.example.examapp.helper.DatabaseHelper1;
 import com.google.android.material.snackbar.Snackbar;
@@ -33,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper1 databaseHelper1;
 //    theme
     SharedPreferences app_preferences;
+    SharedPreferences.Editor editor;
+
     int appTheme;
+    Utils utils;
 
 
     @Override
@@ -43,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
         appTheme = app_preferences.getInt("theme", 0);
         setTheme(appTheme);
+        // data
+        int x = app_preferences.getInt("data_is_inserted",0);
+        if (x==1) {Constant.insertDataToDb=1;} else {Constant.insertDataToDb=0;}
         setContentView(R.layout.activity_main);
 
         password = findViewById(R.id.password);
@@ -50,18 +59,28 @@ public class MainActivity extends AppCompatActivity {
         login = findViewById(R.id.OK);
         activity = findViewById(R.id.activity);
         databaseHelper1 = new DatabaseHelper1(this);
+        utils = new Utils(this);
+        editor = app_preferences.edit();
         // Insert Data to DB
-        Data_Admin valuesAdm = new Data_Admin();
-        valuesAdm.setName("mahmoud");
-        valuesAdm.setUsername("admin");
-        valuesAdm.setPassword("admin");
-        new DatabaseHelper1(this).insertDataToAdmin(valuesAdm);
+        if(Constant.insertDataToDb == 0) {
+            Data_Admin valuesAdm = new Data_Admin();
+            valuesAdm.setName("mahmoud");
+            valuesAdm.setUsername("admin");
+            valuesAdm.setPassword("admin");
+            new DatabaseHelper1(this).insertDataToAdmin(valuesAdm);
+            Data_Student valuesStd = new Data_Student();
+            valuesStd.setName("saleem");
+            valuesStd.setUsername("student");
+            valuesStd.setPassword("student");
+            new DatabaseHelper1(this).insertDataToStudent(valuesStd);
+            utils.insertFiveQuestionToCourseOne();
+            utils.insertFiveQuestionToCourseTwo();
+            utils.insertFiveQuestionToCourseThree();
+            utils.insertFiveQuestionToCourseFour();
+            editor.putInt("data_is_inserted" , 1);
+            editor.commit();
+        }
 
-        Data_Student valuesStd = new Data_Student();
-        valuesStd.setName("saleem");
-        valuesStd.setUsername("student");
-        valuesStd.setPassword("student");
-        new DatabaseHelper1(this).insertDataToStudent(valuesStd);
 
 
         // Login Sound
