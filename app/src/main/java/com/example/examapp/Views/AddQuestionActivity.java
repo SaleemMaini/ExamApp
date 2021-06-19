@@ -305,14 +305,6 @@ public class AddQuestionActivity extends AppCompatActivity {
                 spinnerCourses.setSelection(0);
             }
         });
-        List<Data_Answer> dataA = databaseHelper1.getAllDataAnswer();
-        for(Data_Answer data : dataA){
-            String myInfoAnswer = "id:" + data.getId() + " text: "+data.getText()+" status : "+data.getStatus()
-                    + " id_question: "+data.getId_question();
-            Log.d("dataAnswer", myInfoAnswer);}
 
-        int id  = databaseHelper1.getLastIdOfQuestion();
-        String myInfo = " id : " + id;
-        Log.d("data_id", myInfo);
     }
 }

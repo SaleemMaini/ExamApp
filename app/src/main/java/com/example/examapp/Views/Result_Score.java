@@ -16,11 +16,12 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Result_Score extends AppCompatActivity {
     private int mark;
     private  String Student;
-    private int idCourse;
+    private String Course;
     TextView textViewResult;
     Button btnOk;
     private DatabaseHelper1 databaseHelperResult;
@@ -40,30 +41,32 @@ public class Result_Score extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 //        str_position = bundle.getInt("Selected Course Id") ;
         mark = bundle.getInt("Score") ;
-        Student = bundle.getString("Id_Student");
-        idCourse = bundle.getInt("Course_Id");
+        Student = bundle.getString("Name_Student");
+        Course = bundle.getString("Course_Name");
 
 
         textViewResult = findViewById(R.id.textViewResult);
-        textViewResult.setText( Student + " Your mark of exam \n is \n" + mark + "" + idCourse );
+        textViewResult.setText( Student + " Your mark of exam \n is \n" + mark + "" + Course );
 
         btnOk = findViewById(R.id.OK);
         final MediaPlayer addSound = MediaPlayer.create(this,R.raw.add);
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Data_Exam DQ = new Data_Exam();
-//                DQ.setStudent_id(idStudent);
-//                DQ.setMark(mark);
-//                DQ.setCourse_id(idCourse);
-//                long inserted = new DatabaseHelper1(getApplicationContext()).insertDataToExam(DQ);
-//
-//                if (inserted > 0) {
-//                    Snackbar.make(findViewById(R.id.ScrollResult), "Doned successfully", Snackbar.LENGTH_LONG).show();
-//                    Intent intent = new Intent(Result_Score.this, ActivityCourses.class);
-//                    startActivity(intent);
-//                    finish();
-//                }
+
+                Data_Exam DE = new Data_Exam();
+                DE.setNamestudent(Student);
+                DE.setMark(mark);
+                DE.setNamecourse(Course);
+                long inserted = new DatabaseHelper1(getApplicationContext()).insertDataToExam(DE);
+
+                if (inserted > 0) {
+//                    Toast.makeText(Result_Score.this,"Done successfully",Toast.LENGTH_LONG).show();
+                    Snackbar.make(findViewById(R.id.ScrollResult), "Done successfully", Snackbar.LENGTH_LONG).show();
+                    Intent intent = new Intent(Result_Score.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
                 addSound.start();
             }
         });

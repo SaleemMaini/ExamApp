@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 boolean logged = new DatabaseHelper1(MainActivity.this).login_student(username.getText().toString(), password.getText().toString());
                 if (logged) {
                     enterPageSound.start();
-                    String selectedStudent = valuesStd.getName();
+                    String selectedStudent = username.getText().toString();
                     Intent i = new Intent(getApplicationContext(), ActivityCourses.class);
                     i.putExtra("Selected_Student_Id", selectedStudent);
                     startActivity(i);

@@ -2,17 +2,17 @@ package com.example.examapp.Model;
 
 public class Data_Exam {
     public int id;
-    public int student_id;
+    public String namestudent;
     public int mark;
-    public int course_id;
+    public String namecourse;
 
     public Data_Exam() {
     }
 
-    public Data_Exam(int student_id, int mark, int course_id) {
-        this.student_id = student_id;
+    public Data_Exam(String namestudent, int mark, String namecourse) {
+        this.namestudent = namestudent;
         this.mark = mark;
-        this.course_id = course_id;
+        this.namecourse = namecourse;
     }
 
     public int getId() {
@@ -23,12 +23,12 @@ public class Data_Exam {
         this.id = id;
     }
 
-    public int getStudent_id() {
-        return student_id;
+    public String getNamestudent() {
+        return namestudent;
     }
 
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
+    public void setNamestudent(String namestudent) {
+        this.namestudent = namestudent;
     }
 
     public int getMark() {
@@ -39,11 +39,11 @@ public class Data_Exam {
         this.mark = mark;
     }
 
-    public int getCourse_id() {
-        return course_id;
+    public String getNamecourse() {
+        return namecourse;
     }
 
-    public void setCourse_id(int course_id) {
-        this.course_id = course_id;
+    public void setNamecourse(String namecourse) {
+        this.namecourse = namecourse;
     }
 }

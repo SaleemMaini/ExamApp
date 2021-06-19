@@ -43,9 +43,9 @@ public class ExamActivity extends AppCompatActivity {
 
     private int score;
     private boolean answered;
-    int position;
+    int coursePositionId;
     String studentPosition;
-    int coursePosition;
+    String coursePositionName;
 
 //    Theme
     SharedPreferences app_preferences;
@@ -72,16 +72,15 @@ public class ExamActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
 //        str_position = bundle.getInt("Selected Course Id");
-        position = bundle.getInt("Selected_Course_Id");
-        studentPosition = bundle.getString("Selected_Student_Id");
+        coursePositionId = bundle.getInt("Selected_Course_Id");
+        studentPosition = bundle.getString("Selected_Student");
         databaseHelper1 = new DatabaseHelper1(this);
         currentQuestion = new Data_Question();
 
-        if(position == R.id.courseOneBtn){ questionList = databaseHelper1.getCourse1Questions(); }
-        if(position == R.id.courseTwoBtn){ questionList = databaseHelper1.getCourse2Questions(); }
-        if(position == R.id.courseThreeBtn){ questionList = databaseHelper1.getCourse3Questions(); }
-        if(position == R.id.courseFourBtn){ questionList = databaseHelper1.getCourse4Questions(); }
-        coursePosition = position;
+        if(coursePositionId == R.id.courseOneBtn){ questionList = databaseHelper1.getCourse1Questions();  coursePositionName = "Course1";}
+        if(coursePositionId == R.id.courseTwoBtn){ questionList = databaseHelper1.getCourse2Questions(); coursePositionName = "Course2";}
+        if(coursePositionId == R.id.courseThreeBtn){ questionList = databaseHelper1.getCourse3Questions(); coursePositionName = "Course3";}
+        if(coursePositionId == R.id.courseFourBtn){ questionList = databaseHelper1.getCourse4Questions(); coursePositionName = "Course4";}
         questionCountTotal = 5;
         Collections.shuffle(questionList);
         showNextQuestion();
@@ -154,30 +153,10 @@ public class ExamActivity extends AppCompatActivity {
             score =+ currentQuestion.getMark();
 //            textViewScore.setText("Score: " + score);
         }
-        showSolution();
+        switchNextToFinish();
     }
-    private void showSolution() {
-//        rb1.setTextColor(Color.RED);
-//        rb2.setTextColor(Color.RED);
-//        rb3.setTextColor(Color.RED);
-        switch (currentQuestion.getId_answer()) {
-            case 1:
-//                rb1.setTextColor(Color.GREEN);
-//                textVieruestion.setText("Answer 1 is correct");
-                break;
-            case 2:
-//                rb2.setTextColor(Color.GREEN);
-//                textVieruestion.setText("Answer 2 is correct");
-                break;
-            case 3:
-//                rb3.setTextColor(Color.GREEN);
-//                textVieruestion.setText("Answer fl is correct");
-                break;
-            case 4:
-//                rb3.setTextColor(Color.GREEN);
-//                textVieruestion.setText("Answer fl is correct");
-                break;
-        }
+    private void switchNextToFinish() {
+
         if (questionCounter < questionCountTotal) {
             nextBtnQuestion1.setText("Next");
 
@@ -187,7 +166,7 @@ public class ExamActivity extends AppCompatActivity {
             Intent i = new Intent(ExamActivity.this,Result_Score.class);
             i.putExtra("Score", fScore);
             i.putExtra("Name_Student",studentPosition);
-            i.putExtra("Course_Id",coursePosition);
+            i.putExtra("Course_Name",coursePositionName);
             startActivity(i);
 
         }
