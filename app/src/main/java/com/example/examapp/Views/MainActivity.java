@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
         login = findViewById(R.id.OK);
         activity = findViewById(R.id.activity);
         databaseHelper1 = new DatabaseHelper1(this);
-
-
+        // Insert Data to DB
         Data_Admin valuesAdm = new Data_Admin();
         valuesAdm.setName("mahmoud");
         valuesAdm.setUsername("admin");
@@ -64,14 +63,20 @@ public class MainActivity extends AppCompatActivity {
         valuesStd.setPassword("student");
         new DatabaseHelper1(this).insertDataToStudent(valuesStd);
 
+
+        // Login Sound
         final MediaPlayer enterPageSound = MediaPlayer.create(this,R.raw.enterpage);
+
+
+
+        // Login Check
         login.setOnClickListener(v -> {
             if (password.getText().toString().isEmpty() || username.getText().toString().isEmpty()) {
                 Snackbar.make(activity, "Username or password not found", Snackbar.LENGTH_LONG).show();
-
             } else if (username.getText().toString().toLowerCase().equals("admin")) {
 
-                boolean logged = new DatabaseHelper1(MainActivity.this).login_admin(username.getText().toString(), password.getText().toString());
+                boolean logged = new DatabaseHelper1(MainActivity.this).login_admin(username.getText().toString(),
+                        password.getText().toString());
                 if (logged) {
                     enterPageSound.start();
                     startActivity(new Intent(getApplicationContext(), ActivityAdminDashboard.class));
@@ -81,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
             } else if (username.getText().toString().toLowerCase().equals("student")) {
 
-                boolean logged = new DatabaseHelper1(MainActivity.this).login_student(username.getText().toString(), password.getText().toString());
+                boolean logged = new DatabaseHelper1(MainActivity.this).login_student(username.getText().toString(),
+                        password.getText().toString());
                 if (logged) {
                     enterPageSound.start();
                     String selectedStudent = username.getText().toString();
@@ -95,9 +101,7 @@ public class MainActivity extends AppCompatActivity {
             }else {
                 Snackbar.make(activity, "Don't Forget Any Field", Snackbar.LENGTH_LONG).show();
             }
-
         });
-
     }
 
     @Override

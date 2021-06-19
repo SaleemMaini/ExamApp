@@ -34,24 +34,33 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//      Start  Set Theme
+
+        //      Start  Set Theme
         app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
         appTheme = app_preferences.getInt("theme", 0);
         setTheme(appTheme);
-//        End set Theme
+
+        //        End set Theme
+
+        // Mute Status
         switchStatus = app_preferences.getInt("muteSwitch",0);
         setContentView(R.layout.activity_setting);
-
         switchMute = findViewById(R.id.switchMute);
         if (switchStatus == 1) {
             switchMute.setChecked(true);
         }
+
+
+
+
         utils = new Utils();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = sharedPreferences.edit();
 
+
+
+
 //        Mute Sound
-        tv = findViewById(R.id.textViewSetting);
         switchMute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -70,6 +79,7 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
     }
+
     public void onClick(View v){
         utils.setColorTheme(v);
 
@@ -80,4 +90,6 @@ public class SettingActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
+
 }
