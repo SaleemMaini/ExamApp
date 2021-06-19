@@ -57,14 +57,14 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
                 + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "name" + " TEXT,"
                 + "username" + " TEXT UNIQUE,"
-                + "password" + " TEXT UNIQUE"
+                + "password" + " TEXT "
                 +  " );" );
 
         db.execSQL("CREATE TABLE  IF NOT EXISTS " + TABLE5_NAME  +" ("
                 + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "text" + " TEXT,"
                 + "status" + " TEXT,"
-                + "id_question" + " TEXT,"
+                + "id_question" + " INTEGER ,"
                 + " FOREIGN KEY(\"id_question\") REFERENCES \"question\"(\"id\")" + " );" );
 
         db.execSQL("CREATE TABLE  IF NOT EXISTS " + TABLE4_NAME  +" ("
@@ -72,25 +72,28 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
                 + "text" + " TEXT,"
                 + "id_answer" + " INTEGER,"
                 + "mark" + " INTEGER,"
-                + "id_course" + " INTEGER" + " );" );
+                + "id_course" + " INTEGER,"
+                + " FOREIGN KEY(\"id_course\") REFERENCES \"course\"(\"id\")"+ " );" );
+
         db.execSQL("CREATE TABLE  IF NOT EXISTS " + TABLE5_NAME  +" ("
                 + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "text" + " TEXT,"
                 + "status" + " TEXT,"
-                + "id_question" + " TEXT,"
+                + "id_question" + " INTEGER,"
                 + " FOREIGN KEY(\"id_question\") REFERENCES \"question\"(\"id\")" + " );" );
 
         db.execSQL("CREATE TABLE  IF NOT EXISTS " + TABLE6_NAME  +" ("
                 + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "type" + " TEXT,"
                 + "id_question" + " INTEGER,"
-                + "id_exam" + " TEXT,"
+                + "id_exam" + " INTEGER,"
                 + "FOREIGN KEY(id_question) REFERENCES question(id)" + " );" );
 
         db.execSQL("CREATE TABLE  IF NOT EXISTS " + TABLE7_NAME  +" ("
                 + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + "id_course" + " INTEGER,"
+                + "id_Student" + " INTEGER,"
                 + "mark" + " INTEGER,"
+                + "id_course" + " INTEGER,"
                 + "FOREIGN KEY(id_course) REFERENCES course(id)"
                 +  " );" );
 
@@ -193,8 +196,9 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
     public  long insertDataToExam(Data_Exam data){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("id_student" , data.getId_student());
+        cv.put("id_student" , data.getStudent_id());
         cv.put("mark" , data.getMark());
+        cv.put("id_course", data.getCourse_id());
         long id = db.insert(TABLE7_NAME , null , cv);
         db.close();
         return  id;

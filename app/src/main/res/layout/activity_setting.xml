@@ -9,7 +9,7 @@
     tools:context=".Views.SettingActivity">
 
     <ScrollView
-        android:id="@+id/Scroll"
+        android:id="@+id/ScrollResult"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 <LinearLayout

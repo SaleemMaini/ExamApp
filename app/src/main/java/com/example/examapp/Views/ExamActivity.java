@@ -45,7 +45,7 @@ public class ExamActivity extends AppCompatActivity {
     private boolean answered;
     int position;
     String studentPosition;
-    String str_position;
+    int coursePosition;
 
 //    Theme
     SharedPreferences app_preferences;
@@ -74,7 +74,6 @@ public class ExamActivity extends AppCompatActivity {
 //        str_position = bundle.getInt("Selected Course Id");
         position = bundle.getInt("Selected_Course_Id");
         studentPosition = bundle.getString("Selected_Student_Id");
-        str_position = studentPosition;
         databaseHelper1 = new DatabaseHelper1(this);
         currentQuestion = new Data_Question();
 
@@ -82,6 +81,7 @@ public class ExamActivity extends AppCompatActivity {
         if(position == R.id.courseTwoBtn){ questionList = databaseHelper1.getCourse2Questions(); }
         if(position == R.id.courseThreeBtn){ questionList = databaseHelper1.getCourse3Questions(); }
         if(position == R.id.courseFourBtn){ questionList = databaseHelper1.getCourse4Questions(); }
+        coursePosition = position;
         questionCountTotal = 5;
         Collections.shuffle(questionList);
         showNextQuestion();
@@ -187,6 +187,7 @@ public class ExamActivity extends AppCompatActivity {
             Intent i = new Intent(ExamActivity.this,Result_Score.class);
             i.putExtra("Score", fScore);
             i.putExtra("Name_Student",studentPosition);
+            i.putExtra("Course_Id",coursePosition);
             startActivity(i);
 
         }
