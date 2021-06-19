@@ -61,4 +61,5 @@ public class ActivityCourses extends AppCompatActivity {
         i.putExtra("Selected_Student", nameStudent);
         startActivity(i);
     }
+
 }

@@ -98,7 +98,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void deleteData(int position){
         DBH.deleteDataFromQuestion(question_List.get(position));
         question_List.remove(position);
-//        ActivityQuestionMangment.notifyAdapter();
         Course1.notifyAdapter();
         Course2.notifyAdapter();
         Course3.notifyAdapter();

@@ -107,16 +107,12 @@ public class Course1 extends Fragment {
         course1_RecyclerView.setLayoutManager(llm);
         course1_RecyclerView.setItemAnimator(new DefaultItemAnimator());
         course1_RecyclerView.setHasFixedSize(true);
-
+        // Get Course 1 Questions
         List<Data_Question> mydata = databaseHelper1.getCourse1Questions();
-        for(Data_Question data : mydata){
-            String myInfo = "id:" + data.getId() + " Name: "+data.getText()+" Lastname : "+data.getId_answer()
-                    + " Age: "+data.getMark()+" Description: "+ data.getId_course();
-            Log.d("data", myInfo);}
+
 
         //Adapter
         course1_RecyclerView.setAdapter(recyclerViewAdapter);
-//        recyclerViewAdapter.notifyDataSetChanged();
     }
     public static void notifyAdapter(){
         recyclerViewAdapter.notifyDataSetChanged();
