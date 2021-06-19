@@ -22,6 +22,7 @@ import com.example.examapp.Model.Data_Answer;
 import com.example.examapp.Model.Data_Question;
 import com.example.examapp.R;
 import com.example.examapp.helper.DatabaseHelper1;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -82,7 +83,7 @@ public class ExamActivity extends AppCompatActivity {
         if(coursePositionId == R.id.courseThreeBtn){ questionList = databaseHelper1.getCourse3Questions(); coursePositionName = "Course3";}
         if(coursePositionId == R.id.courseFourBtn){ questionList = databaseHelper1.getCourse4Questions(); coursePositionName = "Course4";}
         questionCountTotal = 5;
-        Collections.shuffle(questionList);
+//        Collections.shuffle(questionList);
         showNextQuestion();
 
 
@@ -116,6 +117,7 @@ public class ExamActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 previousSound.start();
+                showPreviousQuestion();
             }
         });
 
@@ -139,6 +141,25 @@ public class ExamActivity extends AppCompatActivity {
             nextBtnQuestion1.setText("confirm");
         } else {
             finishQuiz();
+        }
+    }
+    private void showPreviousQuestion(){
+        rbGroup.clearCheck();
+        if (questionCounter > 0) {
+            currentQuestion = questionList.get(questionCounter);
+            Qtxt.setText(currentQuestion.getText());
+            List<Data_Answer> dataA = databaseHelper1.getAllDataAnswerForQuestion(currentQuestion.getId());
+            for(Data_Answer data : dataA) {
+                RR1.setText(dataA.get(0).getText());
+                RR2.setText(dataA.get(1).getText());
+                RR3.setText(dataA.get(2).getText());
+                RR4.setText(dataA.get(3).getText());
+            }
+            questionCounter--;
+            answered  = false;
+            nextBtnQuestion1.setText("confirm");
+        } else {
+            Snackbar.make(findViewById(R.id.LinearLayoutExamActivity), "No previous question", Snackbar.LENGTH_LONG).show();
         }
     }
     private void finishQuiz() {

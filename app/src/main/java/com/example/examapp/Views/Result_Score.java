@@ -46,7 +46,7 @@ public class Result_Score extends AppCompatActivity {
 
 
         textViewResult = findViewById(R.id.textViewResult);
-        textViewResult.setText( Student + " Your mark of exam \n is \n" + mark + "" + Course );
+        textViewResult.setText( Student + "\nYour mark in  " + Course +  "  examination \n is \n" + mark);
 
         btnOk = findViewById(R.id.OK);
         final MediaPlayer addSound = MediaPlayer.create(this,R.raw.add);
