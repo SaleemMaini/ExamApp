@@ -3,6 +3,7 @@ package com.example.examapp.Controller;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,11 +97,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
     public void deleteData(int position){
-        DBH.deleteDataFromQuestion(question_List.get(position));
-        question_List.remove(position);
-        Course1.notifyAdapter();
-        Course2.notifyAdapter();
-        Course3.notifyAdapter();
-        Course4.notifyAdapter();
+        if (question_List.size() > 5) {
+            int course_id = question_List.get(position).getId_course();
+            if (course_id == 0) {
+                DBH.deleteDataFromQuestion(question_List.get(position));
+                question_List.remove(position);
+                Course1.notifyAdapter();
+            }
+            if (course_id == 1) {
+                DBH.deleteDataFromQuestion(question_List.get(position));
+                question_List.remove(position);
+                Course2.notifyAdapter();
+            }
+            if (course_id == 2) {
+                DBH.deleteDataFromQuestion(question_List.get(position));
+                question_List.remove(position);
+                Course3.notifyAdapter();
+            }
+            if (course_id == 3) {
+                DBH.deleteDataFromQuestion(question_List.get(position));
+                question_List.remove(position);
+                Course4.notifyAdapter();
+            }
+        } else (Toast.makeText(context,"Sorry questions can't be less than 5 ",Toast.LENGTH_LONG)).show();
+
     }
 }

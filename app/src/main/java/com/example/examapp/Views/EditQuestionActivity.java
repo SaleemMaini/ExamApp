@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -105,10 +106,12 @@ public class EditQuestionActivity extends AppCompatActivity {
 
                 databaseHelper1.updateDataToQuestion(QuestionInfo);
 
-                Course1.notifyAdapter();
-                Course2.notifyAdapter();
-                Course3.notifyAdapter();
-                Course4.notifyAdapter();
+                int courseId = QuestionInfo.getId_course();
+                if (courseId == 0) {Course1.notifyAdapter();}
+                if (courseId == 1) {Course2.notifyAdapter();}
+                if (courseId == 2) {Course3.notifyAdapter();}
+                if (courseId == 3) {Course4.notifyAdapter();}
+
 
                 Intent intent = new Intent(EditQuestionActivity.this,ActivityQuestionMangment.class);
                 startActivity(intent);
