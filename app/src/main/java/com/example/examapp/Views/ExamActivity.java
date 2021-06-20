@@ -171,7 +171,7 @@ public class ExamActivity extends AppCompatActivity {
         RadioButton rbSelected = findViewById(rbGroup.getCheckedRadioButtonId());
         int answerNr = rbGroup.indexOfChild(rbSelected) + 1;
         if (answerNr == currentQuestion.getId_answer()) {
-            score =+ currentQuestion.getMark();
+            score += currentQuestion.getMark();
 //            textViewScore.setText("Score: " + score);
         }
         switchNextToFinish();

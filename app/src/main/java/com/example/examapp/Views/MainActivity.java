@@ -73,10 +73,17 @@ public class MainActivity extends AppCompatActivity {
             valuesStd.setUsername("student");
             valuesStd.setPassword("student");
             new DatabaseHelper1(this).insertDataToStudent(valuesStd);
+            // Questions
             utils.insertFiveQuestionToCourseOne();
             utils.insertFiveQuestionToCourseTwo();
             utils.insertFiveQuestionToCourseThree();
             utils.insertFiveQuestionToCourseFour();
+            // Answers
+            utils.insertAnswersToQuestionsForCourseOne();
+            utils.insertAnswersToQuestionsForCourseTwo();
+            utils.insertAnswersToQuestionsForCourseThree();
+            utils.insertAnswersToQuestionsForCourseFour();
+
             editor.putInt("data_is_inserted" , 1);
             editor.commit();
         }
