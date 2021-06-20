@@ -21,19 +21,19 @@
             android:id="@+id/Course2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Course2" />
+            android:text="JS" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/Course3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Course3" />
+            android:text="css" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/Course4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Course4" />
+            android:text="SQL" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2

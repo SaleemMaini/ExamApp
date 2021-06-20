@@ -78,10 +78,10 @@ public class ExamActivity extends AppCompatActivity {
         databaseHelper1 = new DatabaseHelper1(this);
         currentQuestion = new Data_Question();
 
-        if(coursePositionId == R.id.courseOneBtn){ questionList = databaseHelper1.getCourse1Questions();  coursePositionName = "Course1";}
-        if(coursePositionId == R.id.courseTwoBtn){ questionList = databaseHelper1.getCourse2Questions(); coursePositionName = "Course2";}
-        if(coursePositionId == R.id.courseThreeBtn){ questionList = databaseHelper1.getCourse3Questions(); coursePositionName = "Course3";}
-        if(coursePositionId == R.id.courseFourBtn){ questionList = databaseHelper1.getCourse4Questions(); coursePositionName = "Course4";}
+        if(coursePositionId == R.id.courseOneBtn){ questionList = databaseHelper1.getCourse1Questions();  coursePositionName = "HTML";}
+        if(coursePositionId == R.id.courseTwoBtn){ questionList = databaseHelper1.getCourse2Questions(); coursePositionName = "Javascript";}
+        if(coursePositionId == R.id.courseThreeBtn){ questionList = databaseHelper1.getCourse3Questions(); coursePositionName = "CSS";}
+        if(coursePositionId == R.id.courseFourBtn){ questionList = databaseHelper1.getCourse4Questions(); coursePositionName = "SQL";}
         questionCountTotal = 5;
 //        Collections.shuffle(questionList);
         showNextQuestion();
