@@ -46,7 +46,7 @@ public class ActivityAdminDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 enterPageSound.start();
-                startActivity(new Intent(getApplicationContext(), AddQuestionActivity.class));
+                startActivity(new Intent(getApplicationContext(), ExamReportActivity.class));
             }
         });
     }
