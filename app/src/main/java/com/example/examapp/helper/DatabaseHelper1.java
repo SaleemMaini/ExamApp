@@ -303,6 +303,24 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         db.close();
         return allData;
     }
+    // get All Exam Data
+    public List<Data_Exam> getAllExamData() {
+        List<Data_Exam> allData = new ArrayList<>();
+        String query = "SELECT * FROM " + EXAM_TABLE  + " ORDER BY " + "id" + " DESC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery( query ,null);
+        if(cursor.moveToFirst())
+            do{
+                Data_Exam data1 = new Data_Exam();
+                data1.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                data1.setNamestudent( cursor.getString(cursor.getColumnIndex("student_name")));
+                data1.setMark(cursor.getInt(cursor.getColumnIndex("exam_mark")));
+                data1.setNamecourse(cursor.getString(cursor.getColumnIndex("course_name")));
+                allData.add(data1);
+            }while (cursor.moveToNext());
+        db.close();
+        return allData;
+    }
     // getData_Admin
     public Data_Admin getData_Admin(int id){
         SQLiteDatabase db = this.getReadableDatabase();
