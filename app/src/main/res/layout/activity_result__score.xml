@@ -9,77 +9,64 @@
     android:isScrollContainer="false"
     android:orientation="vertical"
     android:verticalScrollbarPosition="defaultPosition"
-    tools:context=".Views.MainActivity">
+    tools:context=".Views.Result_Score">
 
-    <ScrollView
-        android:id="@+id/ScrollResult"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:background="@drawable/header_bg"
+            android:backgroundTint="?attr/colorPrimary">
+
+            <ImageView
+                android:layout_width="77dp"
+                android:layout_height="77dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="150dp"
+                android:text="Result of your exam"
+                android:textColor="@color/white"
+                android:textSize="25dp" />
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center|center_vertical"
             android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="270dp"
-                android:background="@drawable/header_bg"
-                android:backgroundTint="?attr/colorPrimary">
+            <TextView
+                android:id="@+id/textViewResult"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="student your mark in course1 examination is"
+                android:textAlignment="textStart"
+                android:textSize="22sp" />
 
-                <ImageView
-                    android:layout_width="77dp"
-                    android:layout_height="77dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="50dp"
-                    android:src="@drawable/logo" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="150dp"
-                    android:text="Result of your exam"
-                    android:textColor="@color/white"
-                    android:textSize="25dp" />
-
-            </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewResult"
-                    android:layout_width="319dp"
-                    android:layout_height="101dp"
-                    android:layout_marginTop="50dp"
-                    android:gravity="center"
-                    android:text="TextView"
-                    app:autoSizeTextType="uniform"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/OK"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginBottom="30dp"
-                    android:text="ok"
-                    app:backgroundTint="?attr/colorPrimaryVariant" />
-
-            </LinearLayout>
+            <Button
+                android:id="@+id/OK"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="30dp"
+                android:text="ok"
+                app:backgroundTint="?attr/colorPrimaryVariant" />
 
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
 
 
 </LinearLayout>

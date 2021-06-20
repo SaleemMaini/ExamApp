@@ -6,10 +6,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <ScrollView
-        android:id="@+id/Scroll1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,8 +41,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="463dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -56,36 +52,37 @@
 
                 <Button
                     android:id="@+id/courseOneBtn"
-                    android:layout_width="300dp"
-                    android:layout_height="80dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginBottom="5dp"
                     android:onClick="startExam"
-                    android:text="course1"
+                    android:text="Html"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
+
                 <Button
                     android:id="@+id/courseTwoBtn"
-                    android:layout_width="300dp"
-                    android:layout_height="80dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginBottom="5dp"
                     android:onClick="startExam"
-                    android:text="course2"
+                    android:text="CSS"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
 
                 <Button
                     android:id="@+id/courseThreeBtn"
-                    android:layout_width="300dp"
-                    android:layout_height="80dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginBottom="5dp"
                     android:onClick="startExam"
-                    android:text="course3"
+                    android:text="javascript"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
 
                 <Button
                     android:id="@+id/courseFourBtn"
-                    android:layout_width="300dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height"
                     android:onClick="startExam"
-                    android:text="course4"
+                    android:text="sql"
                     app:backgroundTint="?attr/colorPrimaryVariant" />
             </LinearLayout>
 
@@ -93,5 +90,4 @@
 
     </LinearLayout>
 
-    </ScrollView>
 </LinearLayout>

@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:text="Edit or modify question" />
+                android:text="Add question" />
 
             <EditText
                 android:id="@+id/Questiontxt"
@@ -153,8 +153,8 @@
 
             <Button
                 android:id="@+id/buttonadd"
-                android:layout_width="300dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="10dp"

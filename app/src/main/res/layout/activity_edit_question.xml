@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:text="Edit or modify question" />
+                android:text="Edit question" />
 
             <EditText
                 android:id="@+id/QuestiontxtEdit"
@@ -92,8 +92,8 @@
 
             <Button
                 android:id="@+id/buttonsv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
                 android:layout_gravity="center"
                 android:layout_marginBottom="48dp"
                 android:backgroundTint="?attr/colorPrimary"

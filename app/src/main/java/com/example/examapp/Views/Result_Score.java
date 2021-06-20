@@ -26,16 +26,18 @@ public class Result_Score extends AppCompatActivity {
     Button btnOk;
     private DatabaseHelper1 databaseHelperResult;
 
+    //    theme
     SharedPreferences app_preferences;
-
+    int appTheme;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        nameStudent = app_preferences.getString("user_Name_Student","");
-
+//      Start  Set Theme
+        app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        appTheme = app_preferences.getInt("theme", 0);
+        setTheme(appTheme);
         setContentView(R.layout.activity_result__score);
 
         Bundle bundle = getIntent().getExtras();
@@ -46,7 +48,7 @@ public class Result_Score extends AppCompatActivity {
 
 
         textViewResult = findViewById(R.id.textViewResult);
-        textViewResult.setText( Student + "\nYour mark in  " + Course +  "  examination \n is \n" + mark);
+        textViewResult.setText( Student + "\nYour mark in " +Course+  " examination is " + mark);
 
         btnOk = findViewById(R.id.OK);
         final MediaPlayer addSound = MediaPlayer.create(this,R.raw.add);
@@ -62,7 +64,7 @@ public class Result_Score extends AppCompatActivity {
 
                 if (inserted > 0) {
 //                    Toast.makeText(Result_Score.this,"Done successfully",Toast.LENGTH_LONG).show();
-                    Snackbar.make(findViewById(R.id.ScrollResult), "Done successfully", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(findViewById(R.id.activity), "Done successfully", Snackbar.LENGTH_LONG).show();
                     Intent intent = new Intent(Result_Score.this, MainActivity.class);
                     startActivity(intent);
                     finish();

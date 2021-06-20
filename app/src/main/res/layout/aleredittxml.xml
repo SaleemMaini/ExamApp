@@ -10,33 +10,32 @@
 
     <TextView
         android:id="@+id/text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="#F8F8F8"
         android:ems="10"
         android:padding="10dp"
-        android:text="New Question Text" />
+        android:text="Edit Answer Text" />
 
     <EditText
         android:id="@+id/txt_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
         android:layout_marginTop="20dp"
         android:background="#F8F8F8"
         android:ems="10"
-        android:hint="Enter New Qustion Text"
+        android:hint="Enter New Abswer Text"
         android:inputType="textPersonName"
-        android:padding="30dp"
+        android:padding="10dp"
         android:textColorHint="#52183041" />
 
     <Button
         android:id="@+id/btn_edit"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
         android:text="Edit"
+        android:textAlignment="viewStart"
         app:backgroundTint="?attr/colorPrimaryVariant" />
 
 
