@@ -64,5 +64,5 @@ You can download the apk app via this link: https://drive.google.com/file/d/1cBy
 - Username : student
 - Password : student
 
-- Developer Guide: https://github.com/SaleemMaini/ExamApp/blob/master/user%20guide.pdf
-- User Guide:  https://github.com/SaleemMaini/ExamApp/blob/master/developer%20guide.pdf
+- Developer Guide: https://github.com/SaleemMaini/ExamApp/blob/master/Guide/developer%20guide.pdf
+- User Guide:  https://github.com/SaleemMaini/ExamApp/blob/master/Guide/user%20guide.pdf
