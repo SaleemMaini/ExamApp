@@ -29,7 +29,7 @@
 - Student Features: 
   - Login as student:
   <p align="center">
-    <img src="https://github.com/SaleemMaini/ExamApp/blob/master/App%20Screenshot/Admin%20Login.jpg?raw=true" />
+    <img src="https://github.com/SaleemMaini/ExamApp/blob/master/App%20Screenshot/Login%20As%20Student.jpg?raw=true" />
   </p>
   
   - Select course to start the exam:
