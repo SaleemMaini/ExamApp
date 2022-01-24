@@ -1,6 +1,6 @@
 # ExamApp
 - App to do quiz exams in many subjects available and to give the admin many permits and we have done this app for a university assignment in android development course and we got   98 marks.
-- Tools used: Android Studio, Java, SQLite,  Github
+- Stack: Android Studio, Java, SQLite,  Github
 
 - Admin Features: 
   - Login to dashborad:
